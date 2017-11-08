@@ -3,10 +3,15 @@ import { AppRegistry } from 'react-native';
 //
 // AppRegistry.registerComponent('SmilePlay', () => App);
 
-/** 属性 */
-import yochiProps from './react-native-Demo/yochiProps';
+/** flex宽高 */
+import flexRate from './react-native-Demo/flexRate';
+AppRegistry.registerComponent('SmilePlay', () => flexRate);
 
-AppRegistry.registerComponent('SmilePlay', () => yochiProps);
+
+/** 属性 */
+// import yochiProps from './react-native-Demo/yochiProps';
+//
+// AppRegistry.registerComponent('SmilePlay', () => yochiProps);
 
 /** flexBox布局 */
 // import flexBox from './react-native-Demo/flexBox'

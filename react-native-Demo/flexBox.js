@@ -19,6 +19,7 @@ const instructions = Platform.select({
 
 //FlexBox指南：http://www.w3cplus.com/css3/a-guide-to-flexbox-new.html
 
+// noinspection JSAnnotator
 export default class App extends Component<{}> {
     render() {
         return (
