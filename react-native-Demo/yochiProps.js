@@ -39,7 +39,7 @@ export default class App extends Component<{}> {
                 <View style={styles.container}>
                     <ImageBackground source={pic} style={styles.bgImage}>
                         <View>
-                            <Greeting name="现身吧，葫芦娃"/>
+                            <Greeting name="显示吧，分辨率"/>
                             <Text style={styles.welcome}>当前屏幕的宽度：{Dimensions.get('window').width}</Text>
                             <Text style={styles.welcome}>当前屏幕的高度：{Dimensions.get('window').height}</Text>
                             <Text style={styles.welcome}>当前屏幕的分辨率：{Dimensions.get('window').scale}</Text>
