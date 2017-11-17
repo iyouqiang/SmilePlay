@@ -25,7 +25,7 @@ export default class App extends Component<{}> {
     render() {
         return (
             <View ref="topView" style={styles.container}>
-                <Text style={fontSize: 30}>{this.state.person}</Text>
+                <Text style={{fontSize: 30}}>{this.state.person}</Text>
                 <Text>{this.props.age}</Text>
                 <Button title="我就是个Button"
                         color="red"
@@ -58,6 +58,15 @@ export default class App extends Component<{}> {
     //这个方法!!刷新UI之后调用!!!第一次加载UI不会来!!
     componentDidUpdate(){
         AlertIOS.alert('DidUpdate');
+    }
+    
+    componentWillUnmount() {
+        // 卸载界面
+    }
+    
+    //当组件传入的 props 发生变化时调用，例如：父组件状态改变，给子组件传入了新的prop值。用于组件 props 变化后，更新state。
+    componentWillReceiveProps(nextProps) {
+    
     }
 }
 

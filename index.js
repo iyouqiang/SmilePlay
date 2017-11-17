@@ -19,9 +19,33 @@ import { AppRegistry } from 'react-native';
 // AppRegistry.registerComponent('SmilePlay', () => flexBox);
 
 /** 登录界面 */
-// import loginView from  './react-native-Demo/loginView'
+// import loginView from  './react-native-Demo/loginView';
 // AppRegistry.registerComponent('SmilePlay', () => loginView);
 
 /** 生命周期 */
-import  lifeCycle from  './react-native-Demo/lifeCycle'
-AppRegistry.registerComponent('SmilePlay', () => lifeCycle);
+// import  lifeCycle from  './react-native-Demo/lifeCycle';
+// AppRegistry.registerComponent('SmilePlay', () => lifeCycle);
+
+/** 箭头函数练习 暂无*/
+// import arrowFunctionDemo from './react-native-Demo/arrowFunctionDemo';
+// AppRegistry.registerComponent('SmilePlay', () => arrowFunctionDemo);
+
+/** touch */
+// import touchableDemo from './react-native-Demo/touchableDemo';
+// AppRegistry.registerComponent('SmilePlay', () => touchableDemo);
+
+// scrollView
+// import scrollViewDemo from './react-native-Demo/scrollViewDemo';
+// AppRegistry.registerComponent('SmilePlay', () => scrollViewDemo);
+
+// 定时器
+// import timerDemo from './react-native-Demo/timerDemo';
+// AppRegistry.registerComponent('SmilePlay', () => timerDemo);
+
+// 长列表
+// import  FlatListDemo from './react-native-Demo/FlatListDemo';
+// AppRegistry.registerComponent('SmilePlay', () => FlatListDemo)
+
+// 导航栏
+import SimpleStack from './react-native-Demo/reactnavigationDemo'
+AppRegistry.registerComponent('SmilePlay', () => SimpleStack);
