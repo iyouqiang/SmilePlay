@@ -53,5 +53,8 @@ import { AppRegistry } from 'react-native';
 // import HomeNavigation from './src/navigation/HomeNavigation'
 // AppRegistry.registerComponent('SmilePlay', () => HomeNavigation);
 
-import TabBar from './src/tab/TabBar'
-AppRegistry.registerComponent('SmilePlay', () => TabBar);
+// import TabBar from './src/tab/TabBar'
+// AppRegistry.registerComponent('SmilePlay', () => TabBar);
+
+import QQMain from './src/qq/QQMain'
+AppRegistry.registerComponent('SmilePlay', () => QQMain);

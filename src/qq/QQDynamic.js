@@ -31,7 +31,7 @@ export default class QQDynamic extends Component {
         },
         tabBarIcon:({focused,tintColor})=>(
             <Image
-                source={require('../images/star@3x.png')}
+                source={require('../images/star.png')}
                 style={{width:22,height:22,tintColor:tintColor}}
             />
         )

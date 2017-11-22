@@ -22,7 +22,6 @@ export default  class scrollViewDemo extends Component {
                 horizontal={false}
                 //显示滚动条
                 showsVerticalScrollIndicator={false}
-                
             >
                 {this.renderChildImageView()}
                 {/*{this.renderChilView()}*/}

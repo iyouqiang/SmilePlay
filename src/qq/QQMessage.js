@@ -23,7 +23,7 @@ export default class QQMessage extends Component {
                 navigation.navigate("Contact");
             }}>
                 <View style={{width:60, height:44, justifyContent:'center',alignItems:'center'}}>
-                    <Image source={require('../images/add@3x.png')} style={{width:25,height:25}}/>
+                    <Image source={require('../images/add.png')} style={{width:25,height:25}}/>
                 </View>
             </TouchableOpacity>
         ),
@@ -32,7 +32,7 @@ export default class QQMessage extends Component {
                 NavigationManager.drawerNavigation.navigate("DrawerOpen");
             }}>
                 <View style={{width:60, height:44, justifyContent:'center',alignItems:'center'}}>
-                    <Image source={require('../images/me@3x.png')} style={{width:30,height:30}}/>
+                    <Image source={require('../images/me.png')} style={{width:30,height:30}}/>
                 </View>
             </TouchableOpacity>
         ),
@@ -49,7 +49,7 @@ export default class QQMessage extends Component {
         },
         tabBarIcon:({focused,tintColor})=>(
             <Image
-                source={require('../images/message@3x.png')}
+                source={require('../images/message.png')}
                 style={{width:22,height:22,tintColor:tintColor}}
             />
         )

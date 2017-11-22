@@ -12,10 +12,28 @@ import ProfileTab from './ProfileTab';
 const Tab = TabNavigator(
     {
         Home:{
-            screen:HomeTab
+            screen:HomeTab,
+            navigationOptions:({navigation})=>({
+                tabBarLabel:'主页',
+                tabBarIcon:({focused,tintColor})=>(
+                    <Image
+                        source={focused?require('../images/home_hover.png'):require('../images/home.png')}
+                        style={{width:30,height:30,tintColor:tintColor}}
+                    />
+                )
+            }),
         },
         Car:{
-            screen:CarTab
+            screen:CarTab,
+            navigationOptions:({navigation})=>({
+                tabBarLabel:'小汽汽',
+                tabBarIcon:({focused,tintColor})=>(
+                    <Image
+                        source={focused?require('../images/car_hover.png'):require('../images/car.png')}
+                        style={{width:30,height:30,tintColor:tintColor}}
+                    />
+                )
+            }),
         },
         Profile:{
             screen:ProfileTab,
@@ -23,7 +41,7 @@ const Tab = TabNavigator(
                 tabBarLabel:'我的',
                 tabBarIcon:({focused,tintColor})=>(
                     <Image
-                        source={focused?require('../images/user_hover@3x.png'):require('../images/user@3x.png')}
+                        source={focused?require('../images/user_hover.png'):require('../images/user.png')}
                         style={{width:30,height:30,tintColor:tintColor}}
                     />
                 )
@@ -39,24 +57,24 @@ const Tab = TabNavigator(
         initialRouteName:'Profile',
         order:(['Profile','Home','Car']),
         backBehavior:'none',
-        // tabBarOptions:{
-        //     activeTintColor:'red',
-        //     inactiveTintColor:'yellow',
-        //     showIcon:false,
-        //     showLabel:true,
-        //     upperCaseLabel:false,
-        //     labelStyle:{
-        //         fontSize:12
-        //     },
-        //     indicatorStyle:'green',
-        //     pressColor:'#823453',
-        //     pressOpacity:0.8,
-        //     scrollEnabled:true,
-        //     tabStyle:{
-        //         height:44
-        //     }
-        //
-        // }
+        tabBarOptions:{
+            activeTintColor:'#FD854F',
+            inactiveTintColor:'#293753',
+            showIcon:true,
+            showLabel:true,
+            upperCaseLabel:false,
+            labelStyle:{
+                fontSize:12
+            },
+            indicatorStyle:'green',
+            pressColor:'#823453',
+            pressOpacity:0.8,
+            scrollEnabled:true,
+            tabStyle:{
+                height:44
+            }
+
+        }
     }
 );
 

@@ -38,7 +38,7 @@ export default class QQContact extends Component {
         },
         tabBarIcon:({focused,tintColor})=>(
             <Image
-                source={require('../images/contact@3x.png')}
+                source={require('../images/contact.png')}
                 style={{width:22,height:22,tintColor:tintColor}}
             />
         ),
