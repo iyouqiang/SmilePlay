@@ -47,5 +47,11 @@ import { AppRegistry } from 'react-native';
 // AppRegistry.registerComponent('SmilePlay', () => FlatListDemo)
 
 // 导航栏
-import SimpleStack from './react-native-Demo/reactnavigationDemo'
-AppRegistry.registerComponent('SmilePlay', () => SimpleStack);
+// import SimpleStack from './react-native-Demo/reactnavigationDemo'
+// AppRegistry.registerComponent('SmilePlay', () => SimpleStack);
+
+// import HomeNavigation from './src/navigation/HomeNavigation'
+// AppRegistry.registerComponent('SmilePlay', () => HomeNavigation);
+
+import TabBar from './src/tab/TabBar'
+AppRegistry.registerComponent('SmilePlay', () => TabBar);

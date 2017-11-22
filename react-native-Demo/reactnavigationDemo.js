@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, ScrollView, Text } from 'react-native';
+import { Button, ScrollView, Text, View} from 'react-native';
 import { StackNavigator, SafeAreaView } from 'react-navigation';
+
 
 const MyNavScreen = ({ navigation, banner }) => (
     <SafeAreaView>
@@ -67,6 +68,10 @@ MyProfileScreen.navigationOptions = props => {
     };
 };
 
+
+
+
+
 const SimpleStack = StackNavigator({
     Home: {
         screen: MyHomeScreen,
@@ -74,6 +79,9 @@ const SimpleStack = StackNavigator({
     Profile: {
         path: 'people/:name',
         screen: MyProfileScreen,
+        navigationOptions:({
+            headerTitle:'我是都躲着的标题'
+        })
     },
     Photos: {
         path: 'photos/:name',
