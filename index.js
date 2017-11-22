@@ -56,5 +56,8 @@ import { AppRegistry } from 'react-native';
 // import TabBar from './src/tab/TabBar'
 // AppRegistry.registerComponent('SmilePlay', () => TabBar);
 
-import QQMain from './src/qq/QQMain'
-AppRegistry.registerComponent('SmilePlay', () => QQMain);
+// import QQMain from './src/qq/QQMain'
+// AppRegistry.registerComponent('SmilePlay', () => QQMain);
+
+import DrawerPage from './src/drawer/DrawerPage'
+AppRegistry.registerComponent('SmilePlay', () => DrawerPage);

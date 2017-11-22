@@ -18,7 +18,7 @@ export default class DrawerHomePage extends Component {
         drawerIcon:({tintColor}) => {
             return (
                 <Image
-                    source={require('../images/home@3x.png')}
+                    source={require('../images/home.png')}
                     style={[{width:24,height:24},{tintColor:tintColor}]}
                 />
             );

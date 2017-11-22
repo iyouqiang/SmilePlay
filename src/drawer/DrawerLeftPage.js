@@ -20,7 +20,7 @@ export default class DrawerLeftPage extends Component {
         drawerIcon:({tintColor}) => {
             return (
                 <Image
-                    source={require('../images/car@3x.png')}
+                    source={require('../images/car.png')}
                     style={[{width:24,height:24},{tintColor:tintColor}]}
                 />
             );
