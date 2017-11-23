@@ -13,8 +13,8 @@ export default class FlatListDemo extends Component {
         
         return (
             <View style={styles.container}>
-                {/*{this.renderFlatListView()}*/}
-                {this.renderSectionlistView()}
+                {this.renderFlatListView()}
+                {/*{this.renderSectionlistView()}*/}
             </View>
         );
     }
@@ -23,7 +23,7 @@ export default class FlatListDemo extends Component {
     
         return (<FlatList
             data={
-                [ {key: 'Devin'},
+                [   {key: 'Devin'},
                     {key: 'yochi'},
                     {key: 'kung'},
                     {key: 'gong'},
@@ -37,6 +37,10 @@ export default class FlatListDemo extends Component {
             renderItem={({item}) => <View style={styles.subSontainer}>
                 <Text style={styles.item}>{item.key}</Text>
             </View>}
+
+            getItemLayout={(data,index)=>(
+                {length: 100, offset: (100+2) * index, index}
+            )}
         />);
     }
     

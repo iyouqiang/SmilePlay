@@ -15,6 +15,7 @@ export default class ModelNavigation extends Component {
     render() {
         console.log(this.props.navigation);
         console.log(this.props.navigation.state);
+        
         return(
             <View style={styles.container}>
                 <TouchableOpacity onPress={()=>{

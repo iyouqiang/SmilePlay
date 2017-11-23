@@ -18,11 +18,11 @@ export default class FirstNavigation extends Component {
 
     static navigationOptions=({
         title:'首页',
-        header:(
-            <View style={{width:Dimensions.get('window').width,height:64,backgroundColor:'red'}}/>
-        ),
+        // header:(
+        //     <View style={{width:Dimensions.get('window').width,height:64,backgroundColor:'red'}}/>
+        // ),
         headerTitle:(
-            <View style={{width:60,height:20,backgroundColor:'red'}}/>
+            <View style={{width:60,height:44,backgroundColor:'red'}}/>
         ),
         headerBackTitle:'哈哈哈哈哈',
         headerTruncatedBackTitle:'你好',
@@ -48,7 +48,7 @@ export default class FirstNavigation extends Component {
         headerTintColor:'#956',
         gesturesEnabled:false
     });
-
+ 
     componentDidMount() {
         const backAction = NavigationActions.back({
             key: 'Profile'
@@ -57,6 +57,10 @@ export default class FirstNavigation extends Component {
     }
 
     render() {
+    
+        console.log(this.props.navigation);
+        console.log(this.props.navigation.state);
+        
         return(
             <View style={styles.container}>
                 <TouchableOpacity style={[styles.bg]} onPress={()=>{

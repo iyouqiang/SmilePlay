@@ -23,8 +23,8 @@ export default  class scrollViewDemo extends Component {
                 //显示滚动条
                 showsVerticalScrollIndicator={false}
             >
-                {this.renderChildImageView()}
-                {/*{this.renderChilView()}*/}
+                {/*{this.renderChildImageView()}*/}
+                {this.renderChilView()}
             </ScrollView>
         )
     }
@@ -70,13 +70,13 @@ export default  class scrollViewDemo extends Component {
     
     renderChilView(){
         var allChild=[];
-        var colors = ['red', 'green', 'yellow', 'orange', 'purple']
+        var colors = ['white', 'green', 'yellow', 'orange', 'purple']
         for(var i=0;i<colors.length;i++) {
             allChild.push(
                 <View key={i}
                       style={{backgroundColor:colors[i],width:width ,height:height}}
                 >
-                    <Text>{i}</Text>
+                    <Text style={{color:'red', fontSize:30}}>{i}</Text>
                 </View>
             )
         }

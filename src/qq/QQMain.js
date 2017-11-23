@@ -27,6 +27,7 @@ const Drawer = DrawerNavigator(
         }
     },
     {
+        drawerLabel:'侧边栏',
         drawerWidth:Dimensions.get('window').width-80,
         drawerPosition:'left',
         contentComponent:(CustomDrawerContentComponent)

@@ -23,14 +23,16 @@ export default class SecondNavigation extends Component {
         title:'哈哈',
         gesturesEnabled:true
     };
-
-
+    
     componentDidMount() {
         const setParamsAction = NavigationActions.setParams({
             params: { title: 'Hello' },
-            key: 'Second',
+            key: 'Profile',
         });
         this.props.navigation.dispatch(setParamsAction)
+    
+        // var {setParams} = this.props.navigation;
+        // setParams({'second':'大佬'});
     }
 
     render() {

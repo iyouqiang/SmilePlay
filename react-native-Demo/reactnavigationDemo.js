@@ -18,6 +18,8 @@ const MyNavScreen = ({ navigation, banner }) => (
     </SafeAreaView>
 );
 
+//********************************************************************************
+
 const MyHomeScreen = ({ navigation }) => (
     <MyNavScreen banner="Home Screen" navigation={navigation} />
 );
@@ -25,7 +27,7 @@ const MyHomeScreen = ({ navigation }) => (
 MyHomeScreen.navigationOptions = {
     title: 'Welcome',
 };
-
+//********************************************************************************
 const MyPhotosScreen = ({ navigation }) => (
     <MyNavScreen
         banner={`${navigation.state.params.name}'s Photos`}
@@ -36,6 +38,7 @@ MyPhotosScreen.navigationOptions = {
     title: 'Photos',
 };
 
+//********************************************************************************
 const MyProfileScreen = ({ navigation }) => (
     <MyNavScreen
         banner={`${navigation.state.params.mode === 'edit'
@@ -68,10 +71,7 @@ MyProfileScreen.navigationOptions = props => {
     };
 };
 
-
-
-
-
+//********************************************************************************
 const SimpleStack = StackNavigator({
     Home: {
         screen: MyHomeScreen,

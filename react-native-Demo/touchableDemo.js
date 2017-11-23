@@ -5,6 +5,8 @@ import  {
     AlertIOS,
     View,
     Text,
+    TouchableHighlight,
+    Touchable,
 } from 'react-native';
 
 export default class touchableDemo extends Component {
@@ -14,7 +16,7 @@ export default class touchableDemo extends Component {
     
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.container} >
                 <TouchableOpacity activeOpacity={0.5}
                                   onPress={()=>this.click('点击')}
                                   onPressIn={()=>this.click('按下')}
