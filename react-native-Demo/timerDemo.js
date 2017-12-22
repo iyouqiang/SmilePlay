@@ -11,7 +11,7 @@ export default class timerDemo extends Component {
     
     
     /**
-     
+     npm i react-timer-mixin --save
      setTimeout, clearTimeout  尽可能快的执行（在iPhone5S上有可能每秒1000次以上）。
      setInterval, clearInterval：设置间隔执行
      setImmediate, clearImmediate：在当前JavaScript执行块结束的时候执行

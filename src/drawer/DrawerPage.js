@@ -25,10 +25,9 @@ const Drawer = DrawerNavigator(
         Home:{
             screen:DrawerHomePage,
         },
-
         Left:{
             screen:DrawerLeftPage
-        }
+        },
     },
     {
         drawerWidth:300,

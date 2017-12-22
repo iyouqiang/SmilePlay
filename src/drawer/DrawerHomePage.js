@@ -33,7 +33,7 @@ export default class DrawerHomePage extends Component {
                       //点击打开抽屉
                       this.props.navigation.navigate('DrawerOpen')
                   }}>
-                      <Text>打开侧滑栏</Text>
+                      <Text>我是home栏</Text>
                   </TouchableOpacity>
               </View>
         );

@@ -13,13 +13,32 @@ import {
     View,
     Image,
     TextInput,
+    TouchableOpacity,
 } from 'react-native';
 
 var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
-
+import ExampleNavigationManager from './ExampleNavigationManager'
 
 export default class loginView extends Component {
+    
+    static navigationOptions=({
+        headerTitle:'我是主页',
+        //headerTintColor:'#AFF4FE',
+        headerStyle:{
+            backgroundColor:'#FFF2E8',
+        },
+        headerLeft:(
+            <TouchableOpacity onPress={()=>{
+                ExampleNavigationManager.drawerNavigation.navigate('DrawerOpen')
+            }}>
+                <View style={{width:40, height:40, justifyContent:'center',alignItems:'center'}}>
+                    <Image source={require('./img/icon.png')} style={{width:40,height:40,borderRadius:20,}}/>
+                </View>
+            </TouchableOpacity>
+        ),
+    })
+    
     render() {
         return (
             <View style={styles.container}>
@@ -36,9 +55,16 @@ export default class loginView extends Component {
                            password={true}
                 />
                 {/*登录*/}
-                <View style={styles.loginBtnStyle}>
-                    <Text style={{color:'white'}}>登录</Text>
-                </View>
+                <TouchableOpacity onPress={()=>{
+                    ExampleNavigationManager.drawerNavigation.navigate('DrawerOpen')
+                }}>
+    
+                    <View style={styles.loginBtnStyle}>
+                        <Text style={{color:'white'}}>登录</Text>
+                    </View>
+                    
+                </TouchableOpacity>
+               
                 {/*设置*/}
                 <View style={styles.settingStyle}>
                     <Text>无法登录</Text>

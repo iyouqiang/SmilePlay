@@ -5,7 +5,10 @@ import {
     Text,
     StyleSheet,
     View,
+    TouchableOpacity,
 } from 'react-native';
+
+import ExampleNavigationManager from './ExampleNavigationManager'
 
 var Dimensions = require('Dimensions');
 var {width} = Dimensions.get('window');
@@ -15,17 +18,22 @@ export default  class scrollViewDemo extends Component {
     
     render() {
         return(
-            <ScrollView
-                //分页
-                pagingEnabled={true}
-                //滚动方向
-                horizontal={false}
-                //显示滚动条
-                showsVerticalScrollIndicator={false}
-            >
-                {/*{this.renderChildImageView()}*/}
-                {this.renderChilView()}
-            </ScrollView>
+            <TouchableOpacity onPress={()=>{
+                ExampleNavigationManager.drawerNavigation.navigate("DrawerOpen");
+            }}>
+                <ScrollView
+                    //分页
+                    pagingEnabled={true}
+                    //滚动方向
+                    horizontal={false}
+                    //显示滚动条
+                    showsVerticalScrollIndicator={false}
+                >
+                    {this.renderChildImageView()}
+                    {/*{this.renderChilView()}*/}
+                </ScrollView>
+            </TouchableOpacity>
+          
         )
     }
     

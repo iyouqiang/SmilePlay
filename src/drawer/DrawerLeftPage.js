@@ -32,8 +32,10 @@ export default class DrawerLeftPage extends Component {
                 <TouchableOpacity onPress={()=>{
                     //点击关闭侧滑
                     this.props.navigation.navigate('DrawerClose')
+                    // this.props.navigation.navigate('DrawerOpen')
                 }}>
-                    <Text>关闭侧滑栏</Text>
+                    {/*<Text>关闭侧滑栏</Text>*/}
+                    <Text>我是购物栏</Text>
                 </TouchableOpacity>
             </View>
         );

@@ -9,7 +9,6 @@ import {
     Dimensions
 } from 'react-native';
 
-
 import QQDrawerLeft from './QQDrawerLeft';
 import QQDrawerHome  from './QQDrawerHome';
 
@@ -20,6 +19,7 @@ const CustomDrawerContentComponent = (props)=>{
         </QQDrawerLeft>
     );
 };
+
 const Drawer = DrawerNavigator(
     {
         Home:{
