@@ -68,7 +68,7 @@ export default class QQMessage extends Component {
         }
         return(
             <View style={styles.container}>
-                {statusBar}
+                {/*{statusBar}*/}
                 <TouchableOpacity onPress={()=>{
                     this.props.navigation.navigate('ChatList',{'data':'和火星哥的聊天'})
                 }}>

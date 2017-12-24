@@ -8,7 +8,6 @@ import QQDynamic from './QQDynamic';
 import QQChatList from './QQChatList';
 import NavigationManager from '../NavigationManager';
 import {TabNavigator,StackNavigator,TabBarBottom} from 'react-navigation';
-//import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
 
 const Tab = TabNavigator(
     {

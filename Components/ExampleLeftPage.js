@@ -12,11 +12,12 @@ import {
 } from 'react-native';
 
 import ExampleNavigationManager from './ExampleNavigationManager'
-import loginView from './loginView';
 
 var Dimensions = require('Dimensions');
 var {width}    = Dimensions.get('window');
 var {height}    = Dimensions.get('window');
+
+let LEFTWIDTH = (2.0/3.0)*width;
 
 export default class ExampleLeftPage extends Component {
     
@@ -24,20 +25,11 @@ export default class ExampleLeftPage extends Component {
         return (
     
             <View style={styles.container}>
-                <ImageBackground source={require('./img/yuanMale.png') } style={{width:(2.0/3.0)*width,height:height}}>
+
+                <ImageBackground source={require('./Resources/yuanMale.png') } style={{width:LEFTWIDTH,height:height}}>
                     {this.renderFlatListView()}
                 </ImageBackground>
-                {/*<TouchableOpacity onPress={()=>{*/}
-                    {/*//点击关闭侧滑*/}
-                    {/*//this.props.navigation.navigate('DrawerClose')*/}
-                    {/*this.props.navigation.navigate('DrawerClose')*/}
-                {/*}}>*/}
-                    {/*/!*<Text>关闭侧滑栏</Text>*!/*/}
-                    {/*<Text>我是案例列表</Text>*/}
-                {/*</TouchableOpacity>*/}
-               
-    
-               
+
             </View>
         );
     }
@@ -52,8 +44,8 @@ export default class ExampleLeftPage extends Component {
         return (<FlatList style={{width:(2.0/3.0)*width}}
             data = {
                 [
-                    {key:'最新资讯'},
-                    {key:'热门推荐'},
+                    {key:'疯狂猿'},
+                    {key:'猿猿资讯'},
                     {key:'技术专栏'},
                     {key:'段段传奇'},
                     {key:'我播专场'},
@@ -88,7 +80,7 @@ export default class ExampleLeftPage extends Component {
     _listHeaderView = ()=> {
         return (
             <View style={styles.listheaderViewStyle}>
-                <Image source={require('./img/icon.png')} style={styles.listHeaderIconStyle}>
+                <Image source={require('./Resources/icon.png')} style={styles.listHeaderIconStyle}>
                 
                 </Image>
             </View>
@@ -100,18 +92,35 @@ export default class ExampleLeftPage extends Component {
     }
     
     _onPress(evnet,index){
-        
-        //props.navigation.navigate('MinePage')
-        //ExampleNavigationManager.drawerNavigation.navigate('DrawerClose',{'data':'haha'});
-        console.log(evnet);
-        
-        if(index == 3) {
-            ExampleNavigationManager.drawerNavigation.navigate('Login',{'data':'haha'});
-        }else if (index == 1) {
-    
-            ExampleNavigationManager.drawerNavigation.navigate('ScrollView');
+
+        var titleStr = evnet.key;
+        if (titleStr == '疯狂猿') {
+
+            ExampleNavigationManager.navNavigation.navigate('Home',{info:'Home'});
+        }else if (titleStr == '猿猿资讯'){
+
+            ExampleNavigationManager.navNavigation.navigate('ExampleLatestNewsPage');
+        } else if (titleStr == '技术专栏'){
+
+            ExampleNavigationManager.navNavigation.navigate('TechnicalColumnPage',{info:'TechnicalColumnPage'});
+        }else if (titleStr == '段段传奇'){
+
+
+        }else if (titleStr == '我播专场'){
+
+
+        }else if (titleStr == '图图播报'){
+
+
+        }else if (titleStr == '关于我们'){
+
+
+        }else if (titleStr == '热门推荐'){
+
+
         }else  {
-            ExampleNavigationManager.drawerNavigation.navigate('Home');
+
+            ExampleNavigationManager.navNavigation.navigate('Home');
         }
     }
 }

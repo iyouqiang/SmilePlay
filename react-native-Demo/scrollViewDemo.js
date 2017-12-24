@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-import ExampleNavigationManager from './ExampleNavigationManager'
+import ExampleNavigationManager from '../Components/ExampleNavigationManager'
 
 var Dimensions = require('Dimensions');
 var {width} = Dimensions.get('window');

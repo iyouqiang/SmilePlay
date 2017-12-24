@@ -18,32 +18,15 @@ import {
 
 var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
-import ExampleNavigationManager from './ExampleNavigationManager'
+import ExampleNavigationManager from '../Components/ExampleNavigationManager'
 
 export default class loginView extends Component {
-    
-    static navigationOptions=({
-        headerTitle:'我是主页',
-        //headerTintColor:'#AFF4FE',
-        headerStyle:{
-            backgroundColor:'#FFF2E8',
-        },
-        headerLeft:(
-            <TouchableOpacity onPress={()=>{
-                ExampleNavigationManager.drawerNavigation.navigate('DrawerOpen')
-            }}>
-                <View style={{width:40, height:40, justifyContent:'center',alignItems:'center'}}>
-                    <Image source={require('./img/icon.png')} style={{width:40,height:40,borderRadius:20,}}/>
-                </View>
-            </TouchableOpacity>
-        ),
-    })
-    
+
     render() {
         return (
             <View style={styles.container}>
                {/*头像*/}
-                <Image source={require('./img/icon.png')}
+                <Image source={require('./../Components/Resources/icon.png')}
                 style={styles.iconStyle}
                 />
                 {/*账号密码*/}

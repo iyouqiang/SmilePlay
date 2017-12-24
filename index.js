@@ -55,7 +55,7 @@ import { AppRegistry } from 'react-native';
 
 // import TabBar from './src/tab/TabBar'
 // AppRegistry.registerComponent('SmilePlay', () => TabBar);
-
+//
 // import QQMain from './src/qq/QQMain'
 // AppRegistry.registerComponent('SmilePlay', () => QQMain);
 
@@ -66,6 +66,6 @@ import { AppRegistry } from 'react-native';
 // import FetchRequestDemo from './react-native-Demo/FetchRequestDemo'
 // AppRegistry.registerComponent('SmilePlay',() => FetchRequestDemo);
 
-//demo汇总
-import ExampleDrawerPage from './react-native-Demo/ExampleDrawerPage'
+// demo汇总
+import ExampleDrawerPage from './Components/ExampleDrawerPage'
 AppRegistry.registerComponent('SmilePlay',() => ExampleDrawerPage);

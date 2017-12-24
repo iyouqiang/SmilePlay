@@ -1,11 +1,11 @@
 {
- 1.网络请求封装
- 2.Mock Server使用
- 3.自定义单元格
- 4.点击跳转
- 5.视频播放
- 6.相册图片获取
- 7.拍照
- 8.地图使用
+
+ npm i lodash --save
+
+ npm i query-string --save
+
+ 安装：npm i react-native-swiper --save
+ 查看：npm view react-native-swiper
+ 删除：npm rm react-native-swiper --save
 
 }

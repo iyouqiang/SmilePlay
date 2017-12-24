@@ -10,47 +10,45 @@ import {
     DrawerNavigator
 } from 'react-navigation';
 
-import ExampleHomePage from './ExampleHomePage';
 import ExampleLeftPage from './ExampleLeftPage';
-import scrollViewDemo from './scrollViewDemo';
-import loginView from './loginView';
+import ExampleNavigationPage from './ExampleNavigationPage';
+import ExampleNavigationManager from './ExampleNavigationManager'
+import ExampleTechnicalColumnPage from './ExampleTechnicalColumnPage';
+import ExampleLatestNewsPage from './ExampleLatestNewsPage'
+
 var Dimensions = require('Dimensions');
 var {width}    = Dimensions.get('window');
+let LEFTWIDTH  = (2.0/3.0)*width;
 
 const CustomDrawerContentComponent = (props) => {
     
     return(
         
-        <ExampleLeftPage style={styles.container} {...props} />
+        <ExampleLeftPage {...props} />
     )
 }
 
 const ExampleDrawer = DrawerNavigator(
     {
         Home:{
-            screen:ExampleHomePage,
+            screen:ExampleNavigationPage,
         },
-        Left:{
-            screen:ExampleLeftPage,
+        TechnicalColumnPage:{
+            screen:ExampleTechnicalColumnPage,
         },
-    
-        Login:{
-            screen:loginView,
-        },
-        ScrollView:{
-          
-            screen:scrollViewDemo,
+        ExampleLatestNewsPage: {
+            screen:ExampleLatestNewsPage,
         }
     },
     {
-        drawerWidth:(2.0/3.0)*width,
+        drawerWidth:LEFTWIDTH,
         drawerPosition: 'left',
         contentComponent:(CustomDrawerContentComponent),
     }
 );
 
 export default class ExampleDrawerPage extends Component {
-    
+
     render() {
         return (
             
@@ -59,8 +57,3 @@ export default class ExampleDrawerPage extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex:1
-    }
-});

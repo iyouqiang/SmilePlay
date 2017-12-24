@@ -20,7 +20,7 @@ class MinePage extends Component{
         // Note: By default the icon is only shown on iOS. Search the  showIcon option below.
         drawerIcon: ({ tintColor }) => (
             <Image
-                source={require('./img/icon.png')}
+                source={require('./../Components/Resources/icon.png')}
                 style={[styles.icon, {tintColor: tintColor}]}
             />
         ),
