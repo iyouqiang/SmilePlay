@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
-import config from './ECNetwork/config'
-import request from './ECNetwork/ecRequest'
-
+import config from './ECNetwork/config';
+import request from './ECNetwork/ecRequest';
+import Ionicons from "react-native-vector-icons/Ionicons";
 import ExampleNavigationManager from './ExampleNavigationManager';
+
 
 var Dimensions = require('Dimensions');
 var {width}    = Dimensions.get('window');
@@ -152,7 +153,7 @@ export default class ExampleHomePage extends Component {
     _renderSectionItemHeader = ({section}) => (
         
         <View>
-            <View style={{backgroundColor:'#FFF2E9',  height:10, width:width}}></View>
+            {/*<View style={{backgroundColor:'#FFF2E9',  height:10, width:width}}></View>*/}
             <View style={{top:0,left:0,backgroundColor:'white',  height:40, width:width,flexDirection:'row', alignItems:'center'}}>
                 <View style={{backgroundColor:'#7FDEF9', width:2,height:20, marginLeft:10}}></View>
                 <Text style={{fontFamily:'Helvetica', fontWeight:'bold',fontSize:15, marginLeft:5}}>{section.key}</Text>
@@ -187,6 +188,7 @@ export default class ExampleHomePage extends Component {
                 >
                     {this._loadHeaderImg()}
                 </Swiper>
+                <View style={{backgroundColor:'#FFF2E9',  height:10, width:width}}></View>
         </View>)
     }
     
@@ -210,9 +212,10 @@ export default class ExampleHomePage extends Component {
             <Image source={{uri:item.pic}} style={{height: 80, width:150, marginLeft:10,backgroundColor:'red'}}/>
             <View style={{position:'relative', height:80, width:width-160, flexDirection:'column'}}>
                 <Text style={{fontSize:14, marginLeft:10, marginTop:10, marginRight:10}}>{item.title}</Text>
-                <View style={{flexDirection:'row', marginLeft:10, marginTop:10, marginRight:10, height:30}}>
-                    <Image />
-                    <Text style={{color:'#BFBFBF', fontSize:12}}>
+                <View style={{flexDirection:'row',alignItems:'center', marginLeft:10, marginTop:10, marginRight:10, height:30}}>
+                    {/*<Image />*/}
+                    <Ionicons name={ "ios-eye-outline" }  size={20}/>
+                    <Text style={{color:'#BFBFBF', fontSize:12, marginLeft:10}}>
                         {item.view}
                     </Text>
                 </View>

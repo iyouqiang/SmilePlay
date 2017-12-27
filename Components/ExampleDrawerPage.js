@@ -35,21 +35,11 @@ const ExampleDrawer = DrawerNavigator(
         // }
     },
     {
-        //unlocked：不锁定，可以响应打开和关闭操作，默认值;
-
-        //locked-losed：抽屉保持关闭，不能用手势打开
-
-        //locked-open：抽屉保持打开，不能用手势关闭;
-    
-        NavigationDrawerScreenOptions:{
-            gesturesEnabled:false,
-            drawerLockMode: 'closed',
-        },
         drawerLockMode: 'unlocked' | 'locked-closed' | 'locked-open',
         drawerWidth:LEFTWIDTH,
         drawerPosition: 'left',
         drawerBackgroundColor: 'black',
-        useNativeAnimations: true,
+        useNativeAnimations: false,
         gesturesEnabled:false,
         contentComponent:(CustomDrawerContentComponent),
     }
