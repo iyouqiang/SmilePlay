@@ -19,6 +19,7 @@ import request from './ECNetwork/ecRequest'
 
 import navigationOptionInfo from './NavigationOptionsInfo'
 import ExampleWebDetailPage from './ExampleWebDetailPage'
+import ExampleNavigationManager from './ExampleNavigationManager'
 
 export default class ExampleTechnicalColumnPage extends Component {
 
@@ -37,11 +38,18 @@ export default class ExampleTechnicalColumnPage extends Component {
     //     //         <Text>right</Text>
     //     //     </View>
     //     // ),
-    //     // headerLeft:(
-    //     //     <View>
-    //     //         <Text>left</Text>
-    //     //     </View>
-    //     // ),
+    //     headerLeft:(
+    //         <View>
+    //             <TouchableOpacity onPress={()=>{
+    //                 // 这个key系统分配，需要修改组件内容容易崩溃 /node_modules/react-navigation/src/routers/StackRouter.js
+    //                 // 没有提供有api获取组件的key
+    //                 ExampleNavigationManager.navNavigation.goBack()
+    //             }}>
+    //                 <Text>返回到第一个界面</Text>
+    //             </TouchableOpacity>
+    //
+    //         </View>
+    //     ),
     //     headerStyle: {
     //         backgroundColor:'yellow'
     //     },
@@ -58,7 +66,16 @@ export default class ExampleTechnicalColumnPage extends Component {
     render() {
         return (
 
-            <TechnicalColumnPageNav/>
+           // <TechnicalColumnPageNav/>
+            <View>
+                <TouchableOpacity onPress={()=>{
+                    //点击关闭侧滑
+                    ExampleNavigationManager.navNavigation.navigate('DetailWebPage',{name:'web详情'})
+                }}>
+                    {/*<Text>关闭侧滑栏</Text>*/}
+                    <Text>我是技术专栏</Text>
+                </TouchableOpacity>
+            </View>
         );
     }
 
@@ -81,32 +98,64 @@ export default class ExampleTechnicalColumnPage extends Component {
     }
 }
 
-const TechnicalColumnPage = ({ navigation }) => {
-    return (
-        <View style={styles.container}>
+// const TechnicalColumnPage = ({ navigation }) => {
+//     return (
+//         <View style={styles.container}>
+//             <TouchableOpacity onPress={()=>{
+//             //点击关闭侧滑
+//             navigation.navigate('DetailWebPage',{name:'web详情'})
+//
+//         }}>
+//                 {/*<Text>关闭侧滑栏</Text>*/}
+//                 <Text>我是技术专栏</Text>
+//             </TouchableOpacity>
+//         </View>
+//     );
+// }
+//
+// const TechnicalColumnPageNav = StackNavigator(
+//     {
+//         TechnicalColumnPage:{
+//             screen:TechnicalColumnPage
+//         },
+//         DetailWebPage:{
+//             screen:ExampleWebDetailPage
+//         }
+//     },
+//     navigationOptionInfo.config('技术专栏')
+// );
+
+ExampleTechnicalColumnPage.navigationOptions = props => {
+    const { navigation } = props;
+ 
+    return {
+        //headerTitle: `${params.name}`,
+        // Render a button on the right side of the header.
+        // When pressed switches the screen to edit mode.
+        // headerRight: (
+        //     <Button
+        //         title={params.mode === 'edit' ? 'Done' : 'Edit'}
+        //         onPress={() =>
+        //             setParams({ mode: params.mode === 'edit' ? '' : 'edit' })}
+        //     />
+        // ),
+        
+        headerLeft:(
             <TouchableOpacity onPress={()=>{
-            //点击关闭侧滑
-            navigation.navigate('DetailWebPage',{name:'web详情'})
-
-        }}>
-                {/*<Text>关闭侧滑栏</Text>*/}
-                <Text>我是技术专栏</Text>
+                navigation.goBack();
+            }}>
+                <View style={{width:40, height:40, justifyContent:'center',alignItems:'center'}}>
+                    <Text style={{color:'white',}}>返回</Text>
+                </View>
             </TouchableOpacity>
-        </View>
-    );
-}
+        ),
 
-const TechnicalColumnPageNav = StackNavigator(
-    {
-        TechnicalColumnPage:{
-            screen:TechnicalColumnPage
-        },
-        DetailWebPage:{
-            screen:ExampleWebDetailPage
-        }
-    },
-    navigationOptionInfo.config('技术专栏')
-);
+        // headerStyle: {
+        //     backgroundColor: 'green'
+        // },
+        // headerTintColor:'red',
+    };
+};
 
 const styles = StyleSheet.create({
     container: {

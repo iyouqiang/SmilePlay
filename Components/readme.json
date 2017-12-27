@@ -8,7 +8,14 @@
  查看：npm view react-native-swiper
  删除：npm rm react-native-swiper --save
 
-        打包：
+ 图标库组件
+ $ npm install react-native-vector-icons - - save
+ Link图标
+ $react-native link
+ 图标库  提示:需要翻墙…
+ http://ionicframework.com/docs/ionicons/
+
+ 打包：
  native bundle --entry-file demo/index.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false
 
 }

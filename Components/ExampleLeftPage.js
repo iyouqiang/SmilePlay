@@ -21,6 +21,10 @@ let LEFTWIDTH = (2.0/3.0)*width;
 
 export default class ExampleLeftPage extends Component {
     
+    static navigationOptions=({
+        gesturesEnabled:false,
+    })
+    
     render() {
         return (
     
@@ -94,15 +98,15 @@ export default class ExampleLeftPage extends Component {
     _onPress(evnet,index){
 
         var titleStr = evnet.key;
-        if (titleStr == '疯狂猿') {
-
-            ExampleNavigationManager.navNavigation.navigate('Home', {info:'我是首页'});
-        }else if (titleStr == '猿猿资讯'){
-
+    
+        ExampleNavigationManager.drawerNavigation.navigate('DrawerClose');
+        
+        if (titleStr == '猿猿资讯'){
+    
             ExampleNavigationManager.navNavigation.navigate('ExampleLatestNewsPage');
         } else if (titleStr == '技术专栏'){
-
-            ExampleNavigationManager.navNavigation.navigate('TechnicalColumnPage',{info:'TechnicalColumnPage'});
+    
+            ExampleNavigationManager.navNavigation.navigate('TechnicalColumnPage');
         }else if (titleStr == '段段传奇'){
 
 
@@ -118,9 +122,6 @@ export default class ExampleLeftPage extends Component {
         }else if (titleStr == '热门推荐'){
 
 
-        }else  {
-
-            ExampleNavigationManager.navNavigation.navigate('Home');
         }
     }
 }

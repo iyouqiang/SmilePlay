@@ -1,25 +1,29 @@
 
 import React,{ Component } from 'react';
 
-import {
-
-    TouchableOpacity,
-    View,
-    Image,
-    StyleSheet,
-} from 'react-native';
-
 import { StackNavigator,NavigationActions} from 'react-navigation';
 
 import ExampleHomePage from './ExampleHomePage';
 import ExampleNavigationManager from './ExampleNavigationManager';
 import navigationOptionInfo from './NavigationOptionsInfo';
+import ExampleTechnicalColumnPage from "./ExampleTechnicalColumnPage";
+import ExampleLatestNewsPage from "./ExampleLatestNewsPage";
+import ExampleWebDetailPage from './ExampleWebDetailPage';
 
 const Nav = StackNavigator(
     {
         Home:{
             screen:ExampleHomePage,
         },
+        TechnicalColumnPage:{
+            screen:ExampleTechnicalColumnPage,
+        },
+        ExampleLatestNewsPage: {
+            screen:ExampleLatestNewsPage,
+        },
+        DetailWebPage:{
+            screen:ExampleWebDetailPage
+        }
     },
     navigationOptionInfo.config('疯狂猿')
 )
@@ -33,9 +37,8 @@ export default class ExampleNavigationPage extends Component {
             <Nav/>
         );
     }
-
     componentDidMount() {
-        ExampleNavigationManager.navNavigation = this.props.navigation;
+        ExampleNavigationManager.drawerNavigation = this.props.navigation;
     }
 
     componentDidUpdate() {
@@ -49,7 +52,8 @@ export default class ExampleNavigationPage extends Component {
         // })
         // this.props.navigation.dispatch(navigationAction)
         //
-        // console.log(this.props.navigation.state.params.data);
+        //console.log();
+        //alert(this.props.navigation.state.params.info);
     }
 }
 

@@ -23,6 +23,7 @@ navigationOptionInfo.config = (title) => {
 
     return ({
         navigationOptions:({
+            
             headerTitle:title,
             headerTintColor:'white',
             headerStyle:{
@@ -30,7 +31,7 @@ navigationOptionInfo.config = (title) => {
             },
             headerLeft:(
                 <TouchableOpacity onPress={()=>{
-                    ExampleNavigationManager.navNavigation.navigate('DrawerOpen')
+                    ExampleNavigationManager.drawerNavigation.navigate('DrawerOpen')
                 }}>
                     <View style={{width:40, height:40, justifyContent:'center',alignItems:'center'}}>
                         <Image source={require('./Resources/icon.png')} style={{width:40,height:40,borderRadius:20,}}/>

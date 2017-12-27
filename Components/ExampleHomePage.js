@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     StyleSheet,
     Image,
-    Alert,
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
@@ -42,7 +41,7 @@ export default class ExampleHomePage extends Component {
     }
 
     componentDidMount() {
-        
+        ExampleNavigationManager.navNavigation = this.props.navigation;
         {this._requestHomeinfo()}
     }
     
