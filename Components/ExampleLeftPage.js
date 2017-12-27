@@ -96,7 +96,7 @@ export default class ExampleLeftPage extends Component {
         var titleStr = evnet.key;
         if (titleStr == '疯狂猿') {
 
-            ExampleNavigationManager.navNavigation.navigate('Home',{info:'Home'});
+            ExampleNavigationManager.navNavigation.navigate('Home', {info:'我是首页'});
         }else if (titleStr == '猿猿资讯'){
 
             ExampleNavigationManager.navNavigation.navigate('ExampleLatestNewsPage');

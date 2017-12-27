@@ -8,4 +8,7 @@
  查看：npm view react-native-swiper
  删除：npm rm react-native-swiper --save
 
+        打包：
+ native bundle --entry-file demo/index.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false
+
 }

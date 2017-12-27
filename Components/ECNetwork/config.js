@@ -5,7 +5,8 @@ const config = {
         qidianBase:'http://www.qidianlife.com/Singular/index.php',
         reactBase:'http://www.rntools.co/articles',
     },
-
+    //http://www.qidianlife.com/Singular/index.php?m=App&c=Index&a=articleIndex&uid=(null)&page=1&pagesize=6
+    //http://www.qidianlife.com/Singular/index.php?a=articleIndex&uid=(null)&c=Index&m=App&page=1&pagesize=6
     map:{
         method: 'POST',
         headers: {

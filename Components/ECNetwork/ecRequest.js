@@ -13,7 +13,9 @@ let request={
     if (params) {
         url += '?' + queryString.stringify(params)
     }
-
+    
+    console.log('请求地址'+url);
+    
     return fetch(url)
         .then((response)=>response.json())
         .then((response)=>{
