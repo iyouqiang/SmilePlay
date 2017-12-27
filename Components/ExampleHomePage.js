@@ -132,13 +132,15 @@ export default class ExampleHomePage extends Component {
                                      {length: CELLHEIGHT, offset: (CELLHEIGHT+2) * index, index}
                                  )
                              }
-
                              
                              ItemSeparatorComponent={() => <View style={{height:1, backgroundColor:'#FFF2E9'}}></View>}
 
                              ListHeaderComponent={this._renderSectionlistViewHeader()}
                              
-                             renderItem={this._renderSectionItemCell}
+                             renderItem={
+
+                                 this._renderSectionItemCell
+                             }
                              renderSectionHeader={this._renderSectionItemHeader}
                              
                              //ListFooterComponent={() => }
@@ -155,10 +157,12 @@ export default class ExampleHomePage extends Component {
         <View>
             {/*<View style={{backgroundColor:'#FFF2E9',  height:10, width:width}}></View>*/}
             <View style={{top:0,left:0,backgroundColor:'white',  height:40, width:width,flexDirection:'row', alignItems:'center'}}>
-                <View style={{backgroundColor:'#7FDEF9', width:2,height:20, marginLeft:10}}></View>
-                <Text style={{fontFamily:'Helvetica', fontWeight:'bold',fontSize:15, marginLeft:5}}>{section.key}</Text>
+                <View style={{backgroundColor:'#7FDEF9', width:1.5,height:20, marginLeft:10}}></View>
+                <Text style={{fontFamily:'Helvetica', fontWeight:'bold',fontSize:15, marginLeft:10}}>{section.key}</Text>
                 <TouchableOpacity onPress={this._clickMoreInfo}>
-                    <Text style={{fontFamily:'Helvetica',fontSize:12, width:50,color:'black', marginLeft:'70%'}}>更多 ></Text>
+                    {/*<Text style={{fontFamily:'Helvetica',fontSize:12, width:50,color:'black', marginLeft:'69%'}}>更多 >></Text>*/}
+                    {/*<ion-icon name="more"></ion-icon>*/}
+                    <Ionicons name={ "ios-more-outline" } size={30} style={{marginLeft:'79 %'}} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -181,7 +185,7 @@ export default class ExampleHomePage extends Component {
                          autoplay = {true}
                          autoplayTimeout={3}
                          loop={true}
-                    //index={1}
+                         //index={1}
                          paginationStyle={{bottom:5}}
                          dot={<View style={{backgroundColor:'black', opacity:0.3, width:5, height:5, borderRadius:2.5, margin:5}}></View>}
                          activeDot={<View style={{backgroundColor:'white', width:10, height:5,borderRadius:2.5}}></View>}
@@ -207,20 +211,48 @@ export default class ExampleHomePage extends Component {
         return banners;
     }
     
-    _renderSectionItemCell = ({item}) => (
-        <View style={{flexDirection:'row', backgroundColor:'white', height:CELLHEIGHT, width:width, alignItems:'center'}}>
-            <Image source={{uri:item.pic}} style={{height: 80, width:150, marginLeft:10,backgroundColor:'red'}}/>
-            <View style={{position:'relative', height:80, width:width-160, flexDirection:'column'}}>
-                <Text style={{fontSize:14, marginLeft:10, marginTop:10, marginRight:10}}>{item.title}</Text>
-                <View style={{flexDirection:'row',alignItems:'center', marginLeft:10, marginTop:10, marginRight:10, height:30}}>
-                    {/*<Image />*/}
-                    <Ionicons name={ "ios-eye-outline" }  size={20}/>
-                    <Text style={{color:'#BFBFBF', fontSize:12, marginLeft:10}}>
-                        {item.view}
-                    </Text>
+    _renderSectionItemCell = ({item, index, section}) => {
+
+        if (section.key == '最新资讯') {
+
+            return (
+
+                <View style={{flexDirection:'row', backgroundColor:'white', height:CELLHEIGHT + 30, width:width, alignItems:'center'}}>
+                    <Image source={{uri:item.pic}} style={{height: CELLHEIGHT + 20, width:width-20, marginLeft:10,backgroundColor:'gray'}}/>
+                    {/*<View style={{position:'relative', height:80, width:width-160, flexDirection:'column'}}>*/}
+                        {/*<Text style={{fontSize:14, marginLeft:10, marginTop:10, marginRight:10}}>{item.title}</Text>*/}
+                        {/*<View style={{flexDirection:'row',alignItems:'center', marginLeft:10, marginTop:10, marginRight:10, height:30}}>*/}
+                            {/*/!*<Image />*!/*/}
+                            {/*<Ionicons name={ "ios-eye-outline" }  size={20}/>*/}
+                            {/*<Text style={{ fontSize:12, marginLeft:5}}>*/}
+                                {/*/!*{item.view}*!/*/}
+                                {/*{section.key}*/}
+                            {/*</Text>*/}
+                        {/*</View>*/}
+                    {/*</View>*/}
                 </View>
-            </View>
-        </View>);
+            )
+        }else  {
+
+            return (
+
+                <View style={{flexDirection:'row', backgroundColor:'white', height:CELLHEIGHT, width:width, alignItems:'center'}}>
+                    <Image source={{uri:item.pic}} style={{height: 80, width:150, marginLeft:10,backgroundColor:'gray'}}/>
+                    <View style={{position:'relative', height:80, width:width-160, flexDirection:'column'}}>
+                        <Text style={{fontSize:14, marginLeft:10, marginTop:10, marginRight:10}}>{item.title}</Text>
+                        <View style={{flexDirection:'row',alignItems:'center', marginLeft:10, marginTop:10, marginRight:10, height:30}}>
+                            {/*<Image />*/}
+                            <Ionicons name={ "ios-eye-outline" }  size={18}/>
+                            <Text style={{ fontSize:12, marginLeft:5}}>
+                                {item.view}
+                                {/*{section.key}*/}
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+            )
+        }
+    };
 }
 
 const styles = StyleSheet.create({

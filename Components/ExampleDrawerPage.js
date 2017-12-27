@@ -39,7 +39,7 @@ const ExampleDrawer = DrawerNavigator(
         drawerWidth:LEFTWIDTH,
         drawerPosition: 'left',
         drawerBackgroundColor: 'black',
-        useNativeAnimations: false,
+        useNativeAnimations: true,
         gesturesEnabled:false,
         contentComponent:(CustomDrawerContentComponent),
     }
