@@ -25,7 +25,6 @@ export default class ModelNavigation extends Component {
                 }}>
                     <Text>返回到第一个界面</Text>
                 </TouchableOpacity>
-
             </View>
         );
     }

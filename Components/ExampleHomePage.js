@@ -14,7 +14,8 @@ import config from './ECNetwork/config';
 import request from './ECNetwork/ecRequest';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import ExampleNavigationManager from './ExampleNavigationManager';
-
+import Spinkit from 'react-native-spinkit'
+import Toast from 'react-native-root-toast';
 
 var Dimensions = require('Dimensions');
 var {width}    = Dimensions.get('window');
@@ -30,6 +31,7 @@ export default class ExampleHomePage extends Component {
             sections: [],
             mainHeaderInfo:[],
             refreshing :false,
+            showLoading:true,
         };
     }
     
@@ -37,6 +39,17 @@ export default class ExampleHomePage extends Component {
         return (
             <View style={styles.container}>
                 {this._renderSectionlistView()}
+                
+                <View style={styles.loadingcontainer}>
+                    <Spinkit style={styles.spinner}
+                             index={0}
+                             size={50}
+                            // types: ['CircleFlip', 'Bounce', 'Wave', 'WanderingCubes', 'Pulse', 'ChasingDots', 'ThreeBounce', 'Circle', '9CubeGrid', 'WordPress', 'FadingCircle', 'FadingCircleAlt', 'Arc', 'ArcAlt'],
+                             type={'ThreeBounce'}
+                             color="#3D444C"
+                             isVisible={this.state.showLoading}
+                    />
+                </View>
             </View>
         );
     }
@@ -84,12 +97,15 @@ export default class ExampleHomePage extends Component {
                 mainHeaderInfo:data.banner,
                 sections:tempData,
                 refreshing : false,
+                showLoading:false,
             })
+            
         })
             .catch((error)=>{
                 console.log('错误信息：'+error);
                 this.setState({
-                    refreshing : true,
+                    refreshing : false,
+                    showLoading:false,
                 })
             })
     }
@@ -171,29 +187,51 @@ export default class ExampleHomePage extends Component {
     
     _clickMoreInfo(){
         
-        console.log('查看更多信息');
-        
-        alert('wolail');
+        Toast.show("更多信息稍后更新", {
+            duration: Toast.durations.SHORT, // Toast.durations.LONG : Toast.durations.SHORT,
+            position:Toast.positions.CENTER, //TOP CENTER
+            shadow: true,
+            animation: true,
+            hideOnPress: true,
+            delay: 0,
+            onShow: () => {
+                // calls on toast\`s appear animation start
+            },
+            onShown: () => {
+                
+                // calls on toast\`s appear animation end.
+            },
+            onHide: () => {
+                // calls on toast\`s hide animation start.
+            },
+            onHidden: () => {
+                // calls on toast\`s hide animation end.
+            }
+        });
     }
     
     _renderSectionlistViewHeader() {
         
         return (
+            
             <View style={styles.sectionListHeaderStyle}>
                 
                 <Swiper  horizontal={true}
                          autoplay = {true}
                          autoplayTimeout={3}
                          loop={true}
+                         //scrollEnabled={false}
+                         //onTouchStart={()=>{this._showDetailView('1')}}
                          //index={1}
                          paginationStyle={{bottom:5}}
                          dot={<View style={{backgroundColor:'black', opacity:0.3, width:5, height:5, borderRadius:2.5, margin:5}}></View>}
                          activeDot={<View style={{backgroundColor:'white', width:10, height:5,borderRadius:2.5}}></View>}
                 >
-                    {this._loadHeaderImg()}
+                        {this._loadHeaderImg()}
                 </Swiper>
                 <View style={{backgroundColor:'#FFF2E9',  height:10, width:width}}></View>
-        </View>)
+            </View>
+        )
     }
     
     _loadHeaderImg(){
@@ -203,8 +241,8 @@ export default class ExampleHomePage extends Component {
         
             var dataItem = this.state.mainHeaderInfo[i];
             banners.push(
-                <Image key = {i} source={{uri:dataItem.pic}} style={{flex:1}}
-                />
+    
+                <Image  key = {i} source={{uri:dataItem.pic}} style={{flex:1}}/>
             )
         }
         
@@ -217,8 +255,30 @@ export default class ExampleHomePage extends Component {
 
             return (
 
-                <View style={{flexDirection:'row', backgroundColor:'white', height:CELLHEIGHT + 30, width:width, alignItems:'center'}}>
-                    <Image source={{uri:item.pic}} style={{height: CELLHEIGHT + 20, width:width-20, marginLeft:10,backgroundColor:'gray'}}/>
+                <View style={{backgroundColor:'white', height:CELLHEIGHT + 60, width:width}}>
+                    <TouchableOpacity activeOpacity={1.0} onPress={()=>{
+    
+                        // const setParamsAction = NavigationActions.setParams({
+                        //     params: {'title':item.title, 'url':item.url},
+                        //     key: 'DetailWebPage',
+                        // });
+                        // this.props.navigation.dispatch(setParamsAction)
+                        
+                        this.props.navigation.navigate('DetailWebPage',{'title':item.title, 'url':item.url});
+                    }}>
+                    <View>
+                        <Image source={{uri:item.pic}} style={{height: CELLHEIGHT + 10, width:width-20, marginTop:10,marginLeft:10,backgroundColor:'gray'}}/>
+                        <View style={{position:'absolute'}}>
+                            <View style={{left:10,top:CELLHEIGHT,backgroundColor:'black', opacity:0.4, height:20, width:width-20}}></View>
+                            <View style={{position:'absolute',left:10,top:CELLHEIGHT,flexDirection:'row', justifyContent:'center'}}>
+                                <Ionicons name={ "ios-eye-outline" }  size={20} color='white' style={{left:10,backgroundColor:'transparent'}}/>
+                                <Text style={{ fontSize:12, left:15, top:2, backgroundColor:'transparent', color:'white',textAlignVertical:'center'}}>
+                                    {item.view}
+                                    {/*{section.key}*/}
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
                     {/*<View style={{position:'relative', height:80, width:width-160, flexDirection:'column'}}>*/}
                         {/*<Text style={{fontSize:14, marginLeft:10, marginTop:10, marginRight:10}}>{item.title}</Text>*/}
                         {/*<View style={{flexDirection:'row',alignItems:'center', marginLeft:10, marginTop:10, marginRight:10, height:30}}>*/}
@@ -230,12 +290,24 @@ export default class ExampleHomePage extends Component {
                             {/*</Text>*/}
                         {/*</View>*/}
                     {/*</View>*/}
+                    <Text style={{fontSize:14, marginLeft:10, marginTop:10, marginRight:10}}>{item.title}</Text>
+                    </TouchableOpacity>
                 </View>
             )
         }else  {
 
             return (
-
+    
+                <TouchableOpacity activeOpacity={1.0} onPress={()=>{
+        
+                    // const setParamsAction = NavigationActions.setParams({
+                    //     params: {'title':item.title, 'url':item.url},
+                    //     key: 'DetailWebPage',
+                    // });
+                    // this.props.navigation.dispatch(setParamsAction)
+        
+                    this.props.navigation.navigate('DetailWebPage',{'title':item.title, 'url':item.url});
+                }}>
                 <View style={{flexDirection:'row', backgroundColor:'white', height:CELLHEIGHT, width:width, alignItems:'center'}}>
                     <Image source={{uri:item.pic}} style={{height: 80, width:150, marginLeft:10,backgroundColor:'gray'}}/>
                     <View style={{position:'relative', height:80, width:width-160, flexDirection:'column'}}>
@@ -250,9 +322,15 @@ export default class ExampleHomePage extends Component {
                         </View>
                     </View>
                 </View>
+                </TouchableOpacity>
             )
         }
     };
+    
+    _showDetailView(index) {
+        // this.props.navigation.navigate('DetailWebPage');
+        alert(index);
+    }
 }
 
 const styles = StyleSheet.create({
@@ -262,6 +340,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center'
     },
+    
     
     sectionListStyle:{
       
@@ -284,9 +363,18 @@ const styles = StyleSheet.create({
     
     sectionOneCellStyle:{
     
-    
     },
     sectionTwoCellStyle:{
     
-    }
+    },
+    loadingcontainer: {
+        position:'absolute',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    
+    spinner: {
+        marginBottom: 50
+    },
 });

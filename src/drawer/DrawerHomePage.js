@@ -24,8 +24,7 @@ export default class DrawerHomePage extends Component {
             );
         },
     };
-
-
+    
     render() {
         return(
               <View style={styles.container}>

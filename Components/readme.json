@@ -1,21 +1,24 @@
 {
 
- npm i lodash --save
+ "组件库":"https://www.jianshu.com/p/53ff78168acc##%E5%8A%A8%E7%94%BB",
 
- npm i query-string --save
+ "加载动画":"npm install react-native-spinkit@latest --save",
 
- 安装：npm i react-native-swiper --save
- 查看：npm view react-native-swiper
- 删除：npm rm react-native-swiper --save
+ "导航/侧滑/底部标签组件":"npm i react-native-root-toast --save",
 
- 图标库组件
- $ npm install react-native-vector-icons - - save
- Link图标
- $react-native link
- 图标库  提示:需要翻墙…
- http://ionicframework.com/docs/ionicons/
+ "弹窗":"npm i react-native-root-toast --save",
 
- 打包：
- native bundle --entry-file demo/index.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false
+ "卡片":"npm i react-native-snap-carousel --save",
 
+ "json合并":"npm i lodash --save",
+
+ "jquery":"npm i query-string --save",
+
+ "轮播图不建议使用无点击事件":" 安装：npm i react-native-swiper --save 查看：npm view react-native-swiper 删除：npm rm react-native-swiper --save",
+
+ "图标库组件":"npm install react-native-vector-icons - - save",
+ "Link图标 重新运行项目":"react-native link",
+ "图标库":"http://ionicframework.com/docs/ionicons/",
+
+ "打离线宝":"native bundle --entry-file demo/index.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false"
 }

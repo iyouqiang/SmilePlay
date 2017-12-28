@@ -4,72 +4,68 @@
 
 import React,{ Component } from 'react';
 import {
-
     View,
     Text,
     TouchableOpacity,
     StyleSheet,
     Image,
-    Button,
+    WebView,
 } from 'react-native';
 
+import navigationOptionInfo from './NavigationOptionsInfo';
+import Ionicons from "react-native-vector-icons/Ionicons";
+
+var Dimensions = require('Dimensions');
+var {width, height} = Dimensions.get('window');
 
 export default class ExampleWebDetailPage extends Component {
-
+    
+    constructor(props){
+        
+        super(props);
+        
+        this.state = {
+        
+        }
+    }
+    
+    static navigationOptions = props => navigationOptionInfo.commomHeader(props);
+    
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={()=>{
-            //点击关闭侧滑
-            navigation.navigate('DrawerOpen')
-
-        }}>
-                    {/*<Text>关闭侧滑栏</Text>*/}
-                    <Text>我是详情界面</Text>
-                </TouchableOpacity>
+                <WebView style={styles.webViewStyle}
+                         source={{uri: this.props.navigation.state.params.url}}
+                         startInLoadingState={true}
+                         domStorageEnabled={true}
+                         javaScriptEnabled={true}
+                >
+                </WebView>
             </View>
         );
     }
-
-    componentDidMount() {
-
-
-    }
+    
+    /**
+ 
+     A传
+     this.props.navigation.navigate('DetailWebPage',{'title':item.title, 'url':item.url});
+     B拿
+     this.props.navigation.state.params.title
+     
+     navigate('Detail',{
+                   // 跳转的时候携带一个参数去下个页面
+                   callback: (data)=>{
+                         console.log(data); // 打印值为：'回调参数'
+                     }
+                   });
+     const {navigate,goBack,state} = this.props.navigation;
+     // 在第二个页面,在goBack之前,将上个页面的方法取到,并回传参数,这样回传的参数会重走render方法
+     state.params.callback('回调参数');
+     goBack();
+     */
 }
 
-ExampleWebDetailPage.navigationOptions = props => {
-    const { navigation } = props;
-    const { state, setParams } = navigation;
-    const { params } = state;
-    return {
-        headerTitle: `${params.name}`,
-        // Render a button on the right side of the header.
-        // When pressed switches the screen to edit mode.
-        // headerRight: (
-        //     <Button
-        //         title={params.mode === 'edit' ? 'Done' : 'Edit'}
-        //         onPress={() =>
-        //             setParams({ mode: params.mode === 'edit' ? '' : 'edit' })}
-        //     />
-        // ),
-
-        headerLeft:(
-            <TouchableOpacity onPress={()=>{
-                    navigation.goBack();
-                }}>
-                <View style={{width:40, height:40, justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{color:'white',}}>返回</Text>
-                </View>
-            </TouchableOpacity>
-        ),
-
-        // headerStyle: {
-        //     backgroundColor: 'green'
-        // },
-        // headerTintColor:'red',
-    };
-};
-
+// ExampleWebDetailPage.navigationOptions = props => navigationOptionInfo.commomHeader(props);
 
 const styles = StyleSheet.create({
     container: {
@@ -77,5 +73,9 @@ const styles = StyleSheet.create({
         backgroundColor:'#FFF2E8',
         justifyContent:'center',
         alignItems:'center'
+    },
+    webViewStyle: {
+        flex:1,
+        width:width,
     }
 });

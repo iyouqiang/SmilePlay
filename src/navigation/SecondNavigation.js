@@ -16,7 +16,7 @@ export default class SecondNavigation extends Component {
     // 构造
       constructor(props) {
         super(props);
-
+        
       }
 
     static navigationOptions = {

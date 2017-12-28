@@ -14,9 +14,32 @@ import {
 } from 'react-native';
 
 import ExampleNavigationManager from './ExampleNavigationManager';
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-let navigationOptionInfo={
+let navigationOptionInfo = {
 
+}
+
+navigationOptionInfo.commomHeader = (props) => {
+    
+    const { navigation } = props;
+    const { state } = navigation;
+    const { params } = state;
+    
+    return {
+        headerTitle: `${params.title}`,
+        headerLeft:(
+            <TouchableOpacity onPress={()=>{
+                
+                navigation.goBack();
+            }}>
+                <View style={{width:60, bottom:0, left:10}}>
+                    <Ionicons name={ "ios-arrow-back-outline" }  size={25} color='white' style={{backgroundColor:'transparent'}}/>
+                </View>
+            
+            </TouchableOpacity>
+        ),
+    };
 }
 
 navigationOptionInfo.config = (title) => {
