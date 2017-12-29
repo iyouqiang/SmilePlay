@@ -9,11 +9,19 @@ import navigationOptionInfo from './NavigationOptionsInfo';
 import ExampleTechnicalColumnPage from "./ExampleTechnicalColumnPage";
 import ExampleLatestNewsPage from "./ExampleLatestNewsPage";
 import ExampleWebDetailPage from './ExampleWebDetailPage';
+import ExampleLoadingView from './Home/ExampleLoadingView';
+import ExampleAboutUSPage from './ExampleAboutUSPage'
+import ExamplePicturePage from './ExampleAboutUSPage'
+import ExampleVideoPage from './ExampleAboutUSPage'
 
 const Nav = StackNavigator(
     {
         Home:{
             screen:ExampleHomePage,
+            // path: 'people/:name',
+            // navigationOptions:({
+            //     headerTitle:'我是都躲着的标题'
+            // })
         },
         TechnicalColumnPage:{
             screen:ExampleTechnicalColumnPage,
@@ -22,8 +30,20 @@ const Nav = StackNavigator(
             screen:ExampleLatestNewsPage,
         },
         DetailWebPage:{
-            screen:ExampleWebDetailPage
-        }
+            screen:ExampleWebDetailPage,
+        },
+        ExampleLoadingView:{
+            screen:ExampleLoadingView,
+        },
+        ExampleVideoPage:{
+            screen:ExampleVideoPage,
+        },
+        ExamplePicturePage:{
+            screen:ExamplePicturePage,
+        },
+        ExampleAboutUSPage:{
+            screen:ExampleAboutUSPage,
+        },
     },
     navigationOptionInfo.config('疯狂猿')
 )

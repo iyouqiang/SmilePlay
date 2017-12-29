@@ -69,3 +69,4 @@ import { AppRegistry } from 'react-native';
 // demo汇总
 import ExampleDrawerPage from './Components/ExampleDrawerPage'
 AppRegistry.registerComponent('SmilePlay',() => ExampleDrawerPage);
+

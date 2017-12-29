@@ -12,30 +12,92 @@ import {
     Image,
 } from 'react-native';
 
-import { StackNavigator} from 'react-navigation';
+import navigationOptionInfo from './NavigationOptionsInfo'
 
 import config from './ECNetwork/config'
 import request from './ECNetwork/ecRequest'
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import {ENTRIES1} from "./Home/entries";
+import SliderEntry from "./Home/SliderEntry"
+import { sliderWidth, itemWidth } from './Home/SliderEntry.style';
+import styles, { colors } from './Home/index.style';
 
-import navigationOptionInfo from './NavigationOptionsInfo'
+const SLIDER_1_FIRST_ITEM = 1;
 
 export default class ExampleLatestNewsPage extends Component {
-
+    
+    static navigationOptions = props => navigationOptionInfo.commomHeader(props);
+    
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
+            slider1Ref: null
+        };
+    }
+    
     render() {
         return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={()=>{
-                //点击关闭侧滑
-                this.props.navigation.navigate('TechnicalColumnPage')
-            
-            }}>
-                {/*<Text>关闭侧滑栏</Text>*/}
-                <Text>我是最新资讯</Text>
-            </TouchableOpacity>
+            <View>
+                <Carousel
+                    ref={(c) => { if (!this.state.slider1Ref) { this.setState({ slider1Ref: c }); } }}
+                    data={ ENTRIES1 }
+                    renderItem={this._renderItemWithParallax}
+                    sliderWidth={sliderWidth}
+                    itemWidth={itemWidth}
+                    hasParallaxImages={true}
+                    firstItem={SLIDER_1_FIRST_ITEM}
+                    inactiveSlideScale={0.9}
+                    inactiveSlideOpacity={0.6}
+                    enableMomentum={false}
+                    containerCustomStyle={styles.slider}
+                    contentContainerCustomStyle={styles.sliderContentContainer}
+                    loop={true}
+                    loopClonesPerSide={2}
+                    autoplay={true}
+                    autoplayDelay={500}
+                    autoplayInterval={3000}
+                    onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
+                />
+                {/*<Pagination*/}
+                    {/*dotsLength={ENTRIES1.length}*/}
+                    {/*activeDotIndex={this.state.slider1ActiveSlide}*/}
+                    {/*containerStyle={styles.paginationContainer}*/}
+                    {/*dotColor={'rgba(255, 255, 255, 0.92)'}*/}
+                    {/*dotStyle={styles.paginationDot}*/}
+                    {/*inactiveDotColor={colors.black}*/}
+                    {/*inactiveDotOpacity={0.4}*/}
+                    {/*inactiveDotScale={0.6}*/}
+                    {/*carouselRef={this.state.slider1Ref}*/}
+                    {/*tappableDots={!!this.state.slider1Ref}*/}
+                {/*/>*/}
+            </View>
         </View>
         );
     }
-
+    
+    _renderItem ({item, index}) {
+        return (
+            <SliderEntry
+                data={item}
+                even={(index + 1) % 2 === 0}
+            />
+        );
+    }
+    
+    _renderItemWithParallax ({item, index}, parallaxProps) {
+        return (
+            <SliderEntry
+                data={item}
+                even={(index + 1) % 2 === 0}
+                parallax={true}
+                parallaxProps={parallaxProps}
+            />
+        );
+    }
+    
     componentDidMount() {
 
         request.get(config.api.qidianBase,
@@ -45,77 +107,11 @@ export default class ExampleLatestNewsPage extends Component {
                 page:'1',
                 pagesize:'10'})
             .then((data)=>{
-
                 console.log(data);
             })
             .catch((error)=>{
-
                 console.log('错误：'+error);
             })
     }
 }
 
-ExampleLatestNewsPage.navigationOptions = props => {
-    const { navigation } = props;
-    
-    return {
-        //headerTitle: `${params.name}`,
-        // Render a button on the right side of the header.
-        // When pressed switches the screen to edit mode.
-        // headerRight: (
-        //     <Button
-        //         title={params.mode === 'edit' ? 'Done' : 'Edit'}
-        //         onPress={() =>
-        //             setParams({ mode: params.mode === 'edit' ? '' : 'edit' })}
-        //     />
-        // ),
-        
-        headerLeft:(
-            <TouchableOpacity onPress={()=>{
-                navigation.goBack();
-            }}>
-                <View style={{width:40, height:40, justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{color:'white',}}>返回</Text>
-                </View>
-            </TouchableOpacity>
-        ),
-        
-        // headerStyle: {
-        //     backgroundColor: 'green'
-        // },
-        // headerTintColor:'red',
-    };
-};
-
-// const latestNewsPage = ({ navigation }) => {
-//     return (
-        {/*<View style={styles.container}>*/}
-            {/*<TouchableOpacity onPress={()=>{*/}
-            {/*//点击关闭侧滑*/}
-            {/*navigation.navigate('DrawerOpen')*/}
-        
-        {/*}}>*/}
-                {/*/!*<Text>关闭侧滑栏</Text>*!/*/}
-                {/*<Text>我是最新资讯</Text>*/}
-            {/*</TouchableOpacity>*/}
-        {/*</View>*/}
-//     );
-// }
-
-// const ExampleLatestNewsPageNav = StackNavigator(
-//     {
-//         latestNewsPage:{
-//             screen:latestNewsPage
-//         },
-//     },
-//     navigationOptionInfo.config('猿猿资讯')
-// );
-
-const styles = StyleSheet.create({
-    container: {
-        flex:1,
-        backgroundColor:'#FFF2E8',
-        justifyContent:'center',
-        alignItems:'center'
-    }
-});

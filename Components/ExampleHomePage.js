@@ -10,12 +10,12 @@ import {
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
-import config from './ECNetwork/config';
-import request from './ECNetwork/ecRequest';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import ExampleNavigationManager from './ExampleNavigationManager';
 import Spinkit from 'react-native-spinkit'
 import Toast from 'react-native-root-toast';
+import ExampleLatestNewsPage from './ExampleLatestNewsPage';
+import ExampleCommon from './ExampleCommonHeader'
 
 var Dimensions = require('Dimensions');
 var {width}    = Dimensions.get('window');
@@ -61,7 +61,7 @@ export default class ExampleHomePage extends Component {
     
     _requestHotArticleInfo() {
         // 获取热门文章列表
-        request.get(config.api.qidianBase,
+        ExampleCommon.request.get(ExampleCommon.config.api.qidianBase,
             {   m:'App',
                 c:'MisArticle',
                 a:'getMisChoiceList',
@@ -79,7 +79,7 @@ export default class ExampleHomePage extends Component {
     
     _requestHomeinfo() {
         // 获取首页信息
-        request.get(config.api.qidianBase, {
+        ExampleCommon.request.get(ExampleCommon.config.api.qidianBase, {
             uid:'(null)',
             m:'App',
             c:'Index',
@@ -96,16 +96,15 @@ export default class ExampleHomePage extends Component {
                 homeinfo:data,
                 mainHeaderInfo:data.banner,
                 sections:tempData,
-                refreshing : false,
+                refreshing:false,
                 showLoading:false,
             })
-            
         })
             .catch((error)=>{
                 console.log('错误信息：'+error);
                 this.setState({
-                    refreshing : false,
-                    showLoading:false,
+                    refreshing: false,
+                    showLoading: false,
                 })
             })
     }
@@ -121,6 +120,12 @@ export default class ExampleHomePage extends Component {
 
                              refreshing={this.state.refreshing}
 
+                             enableEmptySections={
+                                 <View>
+                                     <Text>暂无数据</Text>
+                                 </View>
+                             }
+                             
                              onRefresh = {
 
                                  () => {
@@ -175,39 +180,49 @@ export default class ExampleHomePage extends Component {
             <View style={{top:0,left:0,backgroundColor:'white',  height:40, width:width,flexDirection:'row', alignItems:'center'}}>
                 <View style={{backgroundColor:'#7FDEF9', width:1.5,height:20, marginLeft:10}}></View>
                 <Text style={{fontFamily:'Helvetica', fontWeight:'bold',fontSize:15, marginLeft:10}}>{section.key}</Text>
-                <TouchableOpacity onPress={this._clickMoreInfo}>
+                <TouchableOpacity onPress={
+    
+                    ()=>this._clickMoreInfo(section)
+                     //this._clickMoreInfo
+                }
+                >
                     {/*<Text style={{fontFamily:'Helvetica',fontSize:12, width:50,color:'black', marginLeft:'69%'}}>更多 >></Text>*/}
                     {/*<ion-icon name="more"></ion-icon>*/}
                     <Ionicons name={ "ios-more-outline" } size={30} style={{marginLeft:'79 %'}} />
                 </TouchableOpacity>
             </View>
         </View>
-       
     );
     
-    _clickMoreInfo(){
+    _clickMoreInfo(section) {
         
-        Toast.show("更多信息稍后更新", {
-            duration: Toast.durations.SHORT, // Toast.durations.LONG : Toast.durations.SHORT,
-            position:Toast.positions.CENTER, //TOP CENTER
-            shadow: true,
-            animation: true,
-            hideOnPress: true,
-            delay: 0,
-            onShow: () => {
-                // calls on toast\`s appear animation start
-            },
-            onShown: () => {
-                
-                // calls on toast\`s appear animation end.
-            },
-            onHide: () => {
-                // calls on toast\`s hide animation start.
-            },
-            onHidden: () => {
-                // calls on toast\`s hide animation end.
-            }
-        });
+        if (section.key == '最新资讯') {
+    
+            this.props.navigation.navigate('ExampleLatestNewsPage',{'title':'猿猿热点'});
+        }else  {
+    
+            Toast.show('更多信息稍后更新', {
+                duration: Toast.durations.SHORT, // Toast.durations.LONG : Toast.durations.SHORT,
+                position:Toast.positions.CENTER, //TOP CENTER
+                shadow: true,
+                animation: true,
+                hideOnPress: true,
+                delay: 0,
+                onShow: () => {
+                    // calls on toast\`s appear animation start
+                },
+                onShown: () => {
+            
+                    // calls on toast\`s appear animation end.
+                },
+                onHide: () => {
+                    // calls on toast\`s hide animation start.
+                },
+                onHidden: () => {
+                    // calls on toast\`s hide animation end.
+                }
+            });
+        }
     }
     
     _renderSectionlistViewHeader() {

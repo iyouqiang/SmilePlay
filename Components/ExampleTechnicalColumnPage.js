@@ -62,39 +62,21 @@ export default class ExampleTechnicalColumnPage extends Component {
     //     headerTintColor:'#956',
     //     gesturesEnabled:false
     // });
-
+    
+    static navigationOptions = props => navigationOptionInfo.commomHeader(props);
+    
     render() {
         return (
 
            // <TechnicalColumnPageNav/>
-            <View>
-                <TouchableOpacity onPress={()=>{
-                    //点击关闭侧滑
-                    ExampleNavigationManager.navNavigation.navigate('DetailWebPage',{name:'web详情'})
-                }}>
-                    {/*<Text>关闭侧滑栏</Text>*/}
-                    <Text>我是技术专栏</Text>
-                </TouchableOpacity>
+            <View style={styles.container}>
+                <Text>我是技术专栏</Text>
             </View>
         );
     }
 
     componentDidMount() {
-
-        request.get(config.api.qidianBase,
-            {   m:'App',
-                c:'MisArticle',
-                a:'getMisChoiceList',
-                page:'1',
-                pagesize:'10'})
-            .then((data)=>{
-
-                console.log(data);
-            })
-            .catch((error)=>{
-
-                console.log('错误：'+error);
-            })
+    
     }
 }
 
@@ -125,37 +107,37 @@ export default class ExampleTechnicalColumnPage extends Component {
 //     navigationOptionInfo.config('技术专栏')
 // );
 
-ExampleTechnicalColumnPage.navigationOptions = props => {
-    const { navigation } = props;
- 
-    return {
-        //headerTitle: `${params.name}`,
-        // Render a button on the right side of the header.
-        // When pressed switches the screen to edit mode.
-        // headerRight: (
-        //     <Button
-        //         title={params.mode === 'edit' ? 'Done' : 'Edit'}
-        //         onPress={() =>
-        //             setParams({ mode: params.mode === 'edit' ? '' : 'edit' })}
-        //     />
-        // ),
-        
-        headerLeft:(
-            <TouchableOpacity onPress={()=>{
-                navigation.goBack();
-            }}>
-                <View style={{width:40, height:40, justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{color:'white',}}>返回</Text>
-                </View>
-            </TouchableOpacity>
-        ),
-
-        // headerStyle: {
-        //     backgroundColor: 'green'
-        // },
-        // headerTintColor:'red',
-    };
-};
+// ExampleTechnicalColumnPage.navigationOptions = props => {
+//     const { navigation } = props;
+//
+//     return {
+//         //headerTitle: `${params.name}`,
+//         // Render a button on the right side of the header.
+//         // When pressed switches the screen to edit mode.
+//         // headerRight: (
+//         //     <Button
+//         //         title={params.mode === 'edit' ? 'Done' : 'Edit'}
+//         //         onPress={() =>
+//         //             setParams({ mode: params.mode === 'edit' ? '' : 'edit' })}
+//         //     />
+//         // ),
+//
+//         headerLeft:(
+//             <TouchableOpacity onPress={()=>{
+//                 navigation.goBack();
+//             }}>
+//                 <View style={{width:40, height:40, justifyContent:'center',alignItems:'center'}}>
+//                     <Text style={{color:'white',}}>返回</Text>
+//                 </View>
+//             </TouchableOpacity>
+//         ),
+//
+//         // headerStyle: {
+//         //     backgroundColor: 'green'
+//         // },
+//         // headerTintColor:'red',
+//     };
+// };
 
 const styles = StyleSheet.create({
     container: {

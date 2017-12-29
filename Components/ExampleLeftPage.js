@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import ExampleNavigationManager from './ExampleNavigationManager'
+import ExampleAboutUSPage from "./ExampleAboutUSPage";
 
 var Dimensions = require('Dimensions');
 var {width}    = Dimensions.get('window');
@@ -30,9 +31,11 @@ export default class ExampleLeftPage extends Component {
     
             <View style={styles.container}>
 
-                <ImageBackground source={require('./Resources/yuanMale.png') } style={{width:LEFTWIDTH,height:height}}>
+                <ImageBackground source={require('./Resources/yuanfale.png') } style={{width:LEFTWIDTH,height:height}}>
                     {this.renderFlatListView()}
                 </ImageBackground>
+    
+                {/*{this.renderFlatListView()}*/}
 
             </View>
         );
@@ -48,12 +51,11 @@ export default class ExampleLeftPage extends Component {
         return (<FlatList style={{width:(2.0/3.0)*width}}
             data = {
                 [
-                    {key:'疯狂猿'},
-                    {key:'猿猿资讯'},
+                    {key:'猿猿热点'},
                     {key:'技术专栏'},
-                    {key:'段段传奇'},
-                    {key:'我播专场'},
-                    {key:'图图播报'},
+                    {key:'猿猿段子'},
+                    {key:'猿猿视频'},
+                    {key:'猿猿美图'},
                     {key:'关于我们'}
                 ]
             }
@@ -98,31 +100,28 @@ export default class ExampleLeftPage extends Component {
     _onPress(evnet,index){
 
         var titleStr = evnet.key;
-    
-        ExampleNavigationManager.drawerNavigation.navigate('DrawerClose');
         
-        if (titleStr == '猿猿资讯'){
+        if (titleStr == '猿猿热点'){
     
-            ExampleNavigationManager.navNavigation.navigate('ExampleLatestNewsPage');
+            ExampleNavigationManager.navNavigation.navigate('ExampleLatestNewsPage', {'title':'猿猿热点'});
         } else if (titleStr == '技术专栏'){
     
-            ExampleNavigationManager.navNavigation.navigate('TechnicalColumnPage');
-        }else if (titleStr == '段段传奇'){
-
-
-        }else if (titleStr == '我播专场'){
-
-
-        }else if (titleStr == '图图播报'){
-
-
+            ExampleNavigationManager.navNavigation.navigate('TechnicalColumnPage',{'title':'技术专栏'});
+        }else if (titleStr == '猿猿段子'){
+            
+            ExampleNavigationManager.navNavigation.navigate('ExampleLoadingView',{'title':'猿猿段子'});
+        }else if (titleStr == '猿猿视频'){
+    
+            ExampleNavigationManager.navNavigation.navigate('ExampleVideoPage',{'title':'猿猿视频'});
+        }else if (titleStr == '猿猿美图'){
+    
+            ExampleNavigationManager.navNavigation.navigate('ExamplePicturePage',{'title':'猿猿美图'});
         }else if (titleStr == '关于我们'){
-
-
-        }else if (titleStr == '热门推荐'){
-
-
+    
+            ExampleNavigationManager.navNavigation.navigate('ExampleAboutUSPage',{'title':'关于我们'});
         }
+    
+        ExampleNavigationManager.drawerNavigation.navigate('DrawerClose');
     }
 }
 
@@ -151,6 +150,7 @@ const styles = StyleSheet.create({
         //borderWidth:2,
         //borderColor:'orange',
         //marginBottom:30,
+        backgroundColor:'transparent',
     },
     
     cellViewStyle:{
@@ -170,7 +170,8 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         fontSize:15,
         textAlign:'center',
-        color:'#FDCA42',
+        //color:'#FDCA42',
+        color:'white',
         backgroundColor:'transparent',
     }
     
