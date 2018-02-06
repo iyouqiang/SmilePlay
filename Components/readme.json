@@ -4,7 +4,7 @@
 
  "加载动画":"npm install react-native-spinkit@latest --save",
 
- "导航/侧滑/底部标签组件":"npm i react-native-root-toast --save",
+ "导航栏":"npm install react-navigation --save",
 
  "弹窗":"npm i react-native-root-toast --save",
 
@@ -31,4 +31,11 @@
  "注意事项2：":"1、react-nativgation 侧滑组件没有手势禁用，很尴尬，设计APP架构师需慎重 2、react-native是面向组件的开发，注意组件的灵活运用",
  "注意事项3：":"iOS/Android两方兼顾，发挥RN优势"
 
+
+ /**
+ 几种模态
+ https://github.com/maxs15/react-native-modalbox
+ https://github.com/brentvatne/react-native-modal
+ https://github.com/bodyflex/react-native-simple-modal
+ */
 }

@@ -31,7 +31,7 @@ export default class ExampleLeftPage extends Component {
     
             <View style={styles.container}>
 
-                <ImageBackground source={require('./Resources/yuanfale.png') } style={{width:LEFTWIDTH,height:height}}>
+                <ImageBackground source={require('./Resources/yuanMale.png') } style={{width:LEFTWIDTH,height:height}}>
                     {this.renderFlatListView()}
                 </ImageBackground>
     
@@ -170,8 +170,8 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         fontSize:15,
         textAlign:'center',
-        //color:'#FDCA42',
-        color:'white',
+        color:'#FDCA42',
+        // color:'white',
         backgroundColor:'transparent',
     }
     

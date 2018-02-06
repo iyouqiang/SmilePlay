@@ -32,7 +32,7 @@ export default class ExampleAboutUSPage extends Component {
                     
                 }}>
                     {/*<Text>关闭侧滑栏</Text>*/}
-                    <Text>我是最新资讯</Text>
+                    <Text>关于我们</Text>
                 </TouchableOpacity>
             </View>
         );

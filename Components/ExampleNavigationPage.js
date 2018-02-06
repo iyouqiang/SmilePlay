@@ -11,7 +11,7 @@ import ExampleLatestNewsPage from "./ExampleLatestNewsPage";
 import ExampleWebDetailPage from './ExampleWebDetailPage';
 import ExampleLoadingView from './Home/ExampleLoadingView';
 import ExampleAboutUSPage from './ExampleAboutUSPage'
-import ExamplePicturePage from './ExampleAboutUSPage'
+import ExamplePicturePage from './ExamplePicturePage'
 import ExampleVideoPage from './ExampleAboutUSPage'
 
 const Nav = StackNavigator(

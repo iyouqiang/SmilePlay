@@ -78,7 +78,13 @@ export default class ExampleHomePage extends Component {
     }
     
     _requestHomeinfo() {
-        // 获取首页信息
+        // 获取首页信息 http://www.qidianlife.com/Singular/index.php?
+        // a=articleIndex
+        // &c=Index
+        // &m=App
+        // &page=1
+        // &pagesize=6
+        // &uid=%28null%29
         ExampleCommon.request.get(ExampleCommon.config.api.qidianBase, {
             uid:'(null)',
             m:'App',

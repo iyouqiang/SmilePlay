@@ -4,25 +4,24 @@
 
 import React,{ Component } from 'react';
 import {
-
+    
     View,
     Text,
     TouchableOpacity,
     StyleSheet,
     Image,
+    SectionList,
 } from 'react-native';
 
 import navigationOptionInfo from './NavigationOptionsInfo'
+import ExampleCommon from './ExampleCommonHeader'
+import ExampleLatestNewsHeader from './ExampleHotNews/ExampleLatestNewsHeader'
+import {ENTRIES1} from "./ExampleHotNews/ExampleJSONData";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-import config from './ECNetwork/config'
-import request from './ECNetwork/ecRequest'
-import Carousel, { Pagination } from 'react-native-snap-carousel';
-import {ENTRIES1} from "./Home/entries";
-import SliderEntry from "./Home/SliderEntry"
-import { sliderWidth, itemWidth } from './Home/SliderEntry.style';
-import styles, { colors } from './Home/index.style';
-
-const SLIDER_1_FIRST_ITEM = 1;
+var Dimensions = require('Dimensions');
+var {width, height} = Dimensions.get('window');
+var CELLHEIGHT = 150;
 
 export default class ExampleLatestNewsPage extends Component {
     
@@ -30,88 +29,173 @@ export default class ExampleLatestNewsPage extends Component {
     
     constructor(props) {
         super(props);
-    
+        
         this.state = {
-            slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
-            slider1Ref: null
+            
+            MisArticle:{},
+            hotarticle:[],
+            article:[]
         };
     }
     
     render() {
         return (
-        <View style={styles.container}>
-            <View>
-                <Carousel
-                    ref={(c) => { if (!this.state.slider1Ref) { this.setState({ slider1Ref: c }); } }}
-                    data={ ENTRIES1 }
-                    renderItem={this._renderItemWithParallax}
-                    sliderWidth={sliderWidth}
-                    itemWidth={itemWidth}
-                    hasParallaxImages={true}
-                    firstItem={SLIDER_1_FIRST_ITEM}
-                    inactiveSlideScale={0.9}
-                    inactiveSlideOpacity={0.6}
-                    enableMomentum={false}
-                    containerCustomStyle={styles.slider}
-                    contentContainerCustomStyle={styles.sliderContentContainer}
-                    loop={true}
-                    loopClonesPerSide={2}
-                    autoplay={true}
-                    autoplayDelay={500}
-                    autoplayInterval={3000}
-                    onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
+            <View style={styles.mainContainer}>
+                
+                <SectionList  style={styles.sectionStyle}
+                
+                              keyExtractor={this._extraUniqueKey}
+                
+                              sections={this.state.article}
+                
+                              stickySectionHeadersEnabled={false}
+                
+                              showsVerticalScrollIndicator={false}
+                
+                              getItemLayout = {
+                    
+                                  (data, index) => (
+                        
+                                      {length: CELLHEIGHT, offset:(CELLHEIGHT+2)*index, index}
+                                  )
+                              }
+                
+                              ItemSeparatorComponent={() => <View style={{height:10, backgroundColor:'transparent'}}></View>}
+                
+                              ListHeaderComponent={()=>{
+                    
+                                  return (
+                                      <View>
+                                          <ExampleLatestNewsHeader itemdata={ this.state.hotarticle } />
+                                      </View>
+                                  )
+                              }}
+                
+                              renderItem= { this._renderCellItem }
+                              renderSectionHeader = { this._renderSectionHeader }
                 />
-                {/*<Pagination*/}
-                    {/*dotsLength={ENTRIES1.length}*/}
-                    {/*activeDotIndex={this.state.slider1ActiveSlide}*/}
-                    {/*containerStyle={styles.paginationContainer}*/}
-                    {/*dotColor={'rgba(255, 255, 255, 0.92)'}*/}
-                    {/*dotStyle={styles.paginationDot}*/}
-                    {/*inactiveDotColor={colors.black}*/}
-                    {/*inactiveDotOpacity={0.4}*/}
-                    {/*inactiveDotScale={0.6}*/}
-                    {/*carouselRef={this.state.slider1Ref}*/}
-                    {/*tappableDots={!!this.state.slider1Ref}*/}
-                {/*/>*/}
+            
             </View>
-        </View>
-        );
-    }
-    
-    _renderItem ({item, index}) {
-        return (
-            <SliderEntry
-                data={item}
-                even={(index + 1) % 2 === 0}
-            />
-        );
-    }
-    
-    _renderItemWithParallax ({item, index}, parallaxProps) {
-        return (
-            <SliderEntry
-                data={item}
-                even={(index + 1) % 2 === 0}
-                parallax={true}
-                parallaxProps={parallaxProps}
-            />
         );
     }
     
     componentDidMount() {
-
-        request.get(config.api.qidianBase,
-            {   m:'App',
-                c:'MisArticle',
-                a:'getMisChoiceList',
-                page:'1',
-                pagesize:'10'})
-            .then((data)=>{
-                console.log(data);
+        
+        // 请求热门文章列表
+        {this._requestHotNewsData()}
+        
+    }
+    
+    _requestHotNewsData(){
+        
+        //  http://www.qidianlife.com/Singular/index.php?m=App&c=MisArticle&a=getMisChoiceList&uid=(null)&page=1&pagesize=10
+        ExampleCommon.request.get(ExampleCommon.config.api.qidianBase, {
+            
+            uid:'(null)',
+            m:'App',
+            c:'MisArticle',
+            a:'getMisChoiceList',
+            page:'1',
+            pagesize:'10',
+            
+        }).then((data)=>{
+            
+            let tempData = [];
+            tempData.push({key:'最新资讯', data:data.article})
+            
+            this.setState({
+                MisArticle:data,
+                hotarticle:data.hotarticle,
+                article:tempData,
             })
-            .catch((error)=>{
-                console.log('错误：'+error);
-            })
+        }).catch((error)=>{
+            alert(error);
+        })
+    }
+    
+    _renderSectionHeader = ({section}) => (
+        
+        <View style={{top:0,left:0,backgroundColor:'white',  height:40, width:width,flexDirection:'row', alignItems:'center'}}>
+            
+            <View style={{backgroundColor:'#7FDEF9', width:1.5,height:20, marginLeft:10}}></View>
+            
+            <Text style={{fontFamily:'Helvetica', fontWeight:'bold',fontSize:15, marginLeft:10}}>{section.key}</Text>
+        
+        </View>
+    );
+    
+    _renderCellItem = ({item, index, section}) => {
+        
+        return (
+            
+            <View style={{backgroundColor:'white', height:CELLHEIGHT, width:width}}>
+                <TouchableOpacity activeOpacity={1.0} onPress={()=>{
+                    
+                    this.props.navigation.navigate('DetailWebPage',{'title':item.title, 'url':item.url});
+                }}>
+                    <View>
+                        <Image source={{uri:item.pic}} style={{height: CELLHEIGHT, width:width-20,marginLeft:10 ,backgroundColor:'gray'}}/>
+                        <View style={{position:'absolute'}}>
+                            
+                            <View style={{left:10,top:0,height: CELLHEIGHT , width:width-20,backgroundColor:'black', opacity:0.4}}></View>
+                            
+                            <View style={{position:'absolute',left:10 , justifyContent:'center'}}>
+                                
+                                <Text style={styles.mainTextStyle}>{item.title}</Text>
+                                <View style={{position:'absolute', top:90, left:10, width:width-40,flexDirection:'row', justifyContent:'center'}}>
+                                    
+                                    <Text style={{ fontSize:12, top:2, backgroundColor:'transparent', color:'white',textAlignVertical:'center'}}>
+                                        # 热点 |
+                                    </Text>
+                                    
+                                    <Ionicons name={ "ios-eye-outline" }  size={20} color='white' style={{ left:5, backgroundColor:'transparent'}}/>
+                                    <Text style={{ fontSize:12, top:2,left: 10, backgroundColor:'transparent', color:'white',textAlignVertical:'center'}}>
+                                        {item.view}
+                                        {/*{section.key}*/}
+                                    </Text>
+                                </View>
+                            
+                            </View>
+                        
+                        </View>
+                    </View>
+                
+                </TouchableOpacity>
+            </View>
+        )
+    };
+    
+    _extraUniqueKey(item ,index) {
+        
+        return "index"+index+item;
     }
 }
+
+const styles = StyleSheet.create({
+    
+    mainContainer:{
+        flex:1,
+        backgroundColor:'#FFF2E9',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    sectionStyle:{
+        
+        margin:0,
+    },
+    
+    mainTextStyle:{
+        color:'white',
+        fontSize:14,
+        marginLeft:10,
+        marginTop:10,
+        marginRight:10,
+        justifyContent:'center',
+        width:width-40,
+        top:60,
+        backgroundColor:'transparent',
+        alignContent:'center',
+        textAlign:'center',
+    }
+})
 

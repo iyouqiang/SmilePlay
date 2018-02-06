@@ -17,5 +17,4 @@ export default class ExampleSliderView extends Component {
             slider1Ref: null
         };
     }
-
 }

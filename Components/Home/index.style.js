@@ -10,7 +10,7 @@ export const colors = {
 export default StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor:'red',
+        backgroundColor:'transparent',
         justifyContent:'center',
         alignItems:'center'
     },
@@ -45,7 +45,7 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
     slider: {
-        marginTop: 25
+        marginTop: 10
     },
     sliderContentContainer: {
     },
