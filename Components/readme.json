@@ -16,6 +16,8 @@
 
  "轮播图不建议使用无点击事件":" 安装：npm i react-native-swiper --save 查看：npm view react-native-swiper 删除：npm rm react-native-swiper --save",
 
+ "保存相片到相册":"http://www.hangge.com/blog/cache/detail_1615.html",
+
  "图标库组件":"npm install react-native-vector-icons - - save",
  "Link图标 重新运行项目":"react-native link",
  "图标库":"http://ionicframework.com/docs/ionicons/",

@@ -19,12 +19,15 @@ import {
 
 import navigationOptionInfo from './NavigationOptionsInfo'
 
+import Lightbox from 'react-native-lightbox';
+
 import Modal from 'react-native-modalbox';
 
 import { StackNavigator} from 'react-navigation';
 
 import config from './ECNetwork/config'
 import request from './ECNetwork/ecRequest'
+import ExamplePhotoBrowserScene from "./ExamplePhotoBrowserScene";
 
 let AutoResponsive = require('autoresponsive-react-native');
 
@@ -67,7 +70,7 @@ export default class ExamplePicturePage extends Component {
                             scrollsToTop={true}
                 >
                     <View style={styles.title}>
-                        <Text onPress={this.onPressTitle} style={styles.titleText}>戳我更新鲜</Text>
+                        <Text onPress={this.onPressTitle} style={styles.titleText}>戳我全屏浏览</Text>
                     </View>
                     <AutoResponsive {...this.getAutoResponsiveProps()}>
                         {this.renderChildren()}
@@ -114,15 +117,14 @@ export default class ExamplePicturePage extends Component {
             return (
                 
                     <View style={this.getChildrenStyle()} key={key}>
-    
+                    
                         <Image  source={{uri:this.state.picArray[key]}}
                                 style={styles.imgeStyle }
                         />
-    
+                        
                         {/*这不是个好控件 添加点击事件很难受*/}
                         <Text  style={{backgroundColor:'transparent', flex:1, position:'absolute', width:'100%',height:'100%'}}
                                onPress={() => this._clickPicture(key)} ></Text>
-                        
                     </View>
             );
         }, this);
@@ -138,8 +140,24 @@ export default class ExamplePicturePage extends Component {
     }
     
     onPressTitle = () => {
+    
+        let media = [
+            {photo: 'http://fd.topitme.com/d/2b/0a/11236544043130a2bdo.jpg',},
+            {photo: 'http://cdn.duitang.com/uploads/item/201602/14/20160214143920_ihZAQ.jpeg',},
+            {photo: 'http://img5.duitang.com/uploads/item/201508/28/20150828223722_WeZ4z.jpeg',},
+            {photo: 'http://img4.duitang.com/uploads/item/201501/24/20150124161745_NJmh4.thumb.700_0.jpeg',},
+            {photo: 'http://img4.duitang.com/uploads/item/201410/25/20141025211701_i45C2.jpeg',},
+            {photo: 'http://cdn.duitang.com/uploads/item/201603/11/20160311185930_rFRMN.thumb.700_0.jpeg',},
+            {photo: 'http://img5.duitang.com/uploads/blog/201404/08/20140408055028_ar5Wc.thumb.700_0.jpeg',},
+            {photo: 'http://img.zcool.cn/community/01a48856b5d21d32f875520fcfde2f.jpg@1280w_1l_2o_100sh.png',},
+            {photo: 'http://img4.duitang.com/uploads/item/201504/18/20150418H3050_efFNW.jpeg',},
+            {photo: 'http://img.zcool.cn/community/01fe5257a1997d0000018c1bf192ee.jpg@2o.jpg',},
+            {photo: 'http://img5.duitang.com/uploads/item/201409/13/20140913141633_QyVPw.jpeg',},
+            {photo: 'http://img.zcool.cn/community/01a98b554425e20000019ae9971fdd.jpg@1280w_1l_2o_100sh.jpg',},
+            {photo: 'http://f9.topitme.com/9/b0/47/1157394357dc347b09o.jpg',},
+            {photo: 'http://img.zcool.cn/community/0137c856d2bde932f875520ffa3880.jpg@2o.jpg',}];
         
-        alert('厉害哦');
+        this.props.navigation.navigate('ExamplePhotoBrowserScene',{media:media, index:0});
     }
     
     componentDidMount() {

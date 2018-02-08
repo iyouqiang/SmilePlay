@@ -362,7 +362,6 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     
-    
     sectionListStyle:{
       
         width:width,

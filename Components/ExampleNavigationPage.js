@@ -12,7 +12,9 @@ import ExampleWebDetailPage from './ExampleWebDetailPage';
 import ExampleLoadingView from './Home/ExampleLoadingView';
 import ExampleAboutUSPage from './ExampleAboutUSPage'
 import ExamplePicturePage from './ExamplePicturePage'
-import ExampleVideoPage from './ExampleAboutUSPage'
+import ExampleVideoPage from './ExampleVideoPage'
+import ExampleLightbox from './ExampleLightbox'
+import ExamplePhotoBrowserScene from './ExamplePhotoBrowserScene'
 
 const Nav = StackNavigator(
     {
@@ -42,8 +44,14 @@ const Nav = StackNavigator(
             screen:ExamplePicturePage,
         },
         ExampleAboutUSPage:{
-            screen:ExampleAboutUSPage,
+            screen:ExampleLightbox,
         },
+        ExampleLightbox:{
+            screen:ExampleLightbox,
+        },
+        ExamplePhotoBrowserScene:{
+            screen:ExamplePhotoBrowserScene,
+        }
     },
     navigationOptionInfo.config('疯狂猿')
 )
