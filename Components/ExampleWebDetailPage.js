@@ -31,11 +31,16 @@ export default class ExampleWebDetailPage extends Component {
     
     static navigationOptions = props => navigationOptionInfo.commomHeader(props);
     
+    
+    
     render() {
+        
+        let method = this.props.navigation.state.params.method !=null?this.props.navigation.state.params.method:'GET';
+        
         return (
             <View style={styles.container}>
                 <WebView style={styles.webViewStyle}
-                         source={{uri: this.props.navigation.state.params.url}}
+                         source={{uri: this.props.navigation.state.params.url,method: method} }
                          startInLoadingState={true}
                          domStorageEnabled={true}
                          javaScriptEnabled={true}

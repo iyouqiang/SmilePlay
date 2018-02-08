@@ -23,7 +23,8 @@ import navigationOptionInfo from './NavigationOptionsInfo'
 import ExampleWebDetailPage from './ExampleWebDetailPage'
 import ExampleNavigationManager from './ExampleNavigationManager'
 import Ionicons from "react-native-vector-icons/Ionicons";
-//import ExampleTechnicalListView from 'ExampleTechnical/ExampleTechnicalListView'
+
+import ExampleTechnicalListPage from './ExampleTechnicalListPage'
 
 let Dimensions = require('Dimensions');
 let SCREEN_WIDTH =  Dimensions.get('window').width;
@@ -166,11 +167,13 @@ export default class ExampleTechnicalColumnPage extends Component {
                             scrollEventThrottle={200}
                 >
                 
-                <View style={styles.scrollSubStyle1}>
+                <ExampleTechnicalListPage pageType={1} navigation={this.props.navigation} >
                 
-                </View>
-                    
-                <View style={styles.scrollSubStyle2}></View>
+                </ExampleTechnicalListPage>
+                
+                <ExampleTechnicalListPage pageType={2} navigation={this.props.navigation}>
+                
+                </ExampleTechnicalListPage>
                 
                 </ScrollView>
                 
