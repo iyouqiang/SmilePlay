@@ -33,6 +33,22 @@
  "注意事项2：":"1、react-nativgation 侧滑组件没有手势禁用，很尴尬，设计APP架构师需慎重 2、react-native是面向组件的开发，注意组件的灵活运用",
  "注意事项3：":"iOS/Android两方兼顾，发挥RN优势"
 
+/**
+ react-native-vector-icons//字体图标
+
+ react-native-image-picker//读入照片
+
+ react-native-camera//相机
+
+ react-native-linear-gradient//颜色渐变
+
+ react-native-search-bar//search bar
+
+ react-native-tableview//原生的tableview，可以在list右侧显示索引
+ react-native-video  //Video组件
+
+ react-native link
+ */
 
  /**
  几种模态

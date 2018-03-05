@@ -62,8 +62,8 @@ navigationOptionInfo.config = (title) => {
                 </TouchableOpacity>
             ),
         }),
-
-        mode:'card',
+        gesturesEnabled:false,
+        mode:'card',  // card 默认 modal iOS独有
         headerMode:'screen',
         /**
          headerMode: 导航栏的显示模式:

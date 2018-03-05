@@ -34,9 +34,10 @@ export default class FlatListDemo extends Component {
                     {key: 'asdfasd'},
                 ]
             }
-            renderItem={({item}) => <View style={styles.subSontainer}>
-                <Text style={styles.item}>{item.key}</Text>
-            </View>}
+            renderItem={({item}) =>
+                <View style={styles.subSontainer}>
+                  <Text style={styles.item}>{item.key}</Text>
+                </View>}
 
             getItemLayout={(data,index)=>(
                 {length: 100, offset: (100+2) * index, index}

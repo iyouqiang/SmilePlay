@@ -15,6 +15,7 @@ import ExamplePicturePage from './ExamplePicturePage'
 import ExampleVideoPage from './ExampleVideoPage'
 import ExampleLightbox from './ExampleLightbox'
 import ExamplePhotoBrowserScene from './ExamplePhotoBrowserScene'
+import ExampleVideoPlayer from './ExampleVideoPlayer'
 
 const Nav = StackNavigator(
     {
@@ -51,6 +52,9 @@ const Nav = StackNavigator(
         },
         ExamplePhotoBrowserScene:{
             screen:ExamplePhotoBrowserScene,
+        },
+        ExampleVideoPlayer:{
+            screen:ExampleVideoPlayer,
         }
     },
     navigationOptionInfo.config('疯狂猿')

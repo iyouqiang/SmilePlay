@@ -78,7 +78,7 @@ export default class ExamplePicturePage extends Component {
                 </ScrollView>
                 
                 <Modal
-                    style={[styles.modal, styles.modal1]}
+                    style={[styles.modal]}
                     ref={"modal1"}
                     swipeToClose={this.state.swipeToClose}
                     onClosed={this.onClose}
